@@ -1,0 +1,337 @@
+/* =========================
+   RESET & VARIABLES
+========================= */
+:root {
+  --bg: #0b0f1a;
+  --panel: rgba(255,255,255,.08);
+  --panel-strong: rgba(255,255,255,.12);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.65);
+  --accent: #7c5cff;
+  --accent2: #2dd4bf;
+  --border: rgba(255,255,255,.14);
+  --radius: 18px;
+  --shadow: 0 25px 60px rgba(0,0,0,.45);
+  --max: 1100px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(124,92,255,.25), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(45,212,191,.18), transparent 60%),
+    var(--bg);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+  width: min(var(--max), 100% - 32px);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px 0;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* =========================
+   TOP BAR
+========================= */
+.topbar {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(11,15,26,.7);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  padding: 50px 0 30px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+.hero p {
+  max-width: 640px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+.toolbar {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+
+.input input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  outline: none;
+  width: 160px;
+}
+
+.select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+/* =========================
+   STATUS / EMPTY / ERROR
+========================= */
+.footerNote {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}
+
+.errorBox {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: rgba(255,0,0,.15);
+  border: 1px solid rgba(255,0,0,.35);
+}
+
+/* =========================
+   COURSE CARD
+========================= */
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.10),
+    rgba(255,255,255,.04)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .25s ease, border-color .25s ease;
+   text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124,92,255,.45);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card h3 {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.desc {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+/* =========================
+   PILLS & BADGES
+========================= */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.badge {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000;
+  font-weight: 600;
+}
+
+
+.cover{
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.sub{
+  margin-top: 6px;
+  color: rgba(255,255,255,.68);
+  font-size: 13px;
+}
+
+.course-details .hero{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+.course-details .thumb{
+  width: 100%;
+  border-radius: 18px;
+}
+.course-details .panel{
+  margin-top: 30px;
+  padding: 24px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+}
+.course-details .stats{
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+.course-details .stats div{
+  flex: 1;
+  background: rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+.course-details .stats strong{
+  font-size: 24px;
+  display: block;
+}
+.course-details .actions{
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+}
+.btn.ghost{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: white;
+}
+.back{
+  display: inline-block;
+  margin-top: 20px;
+  color: #aaa;
+  text-decoration: none;
+}
+.back:hover{ color: white; }
+
+
+.book-details .panel{
+  margin-top: 30px;
+  padding: 24px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+}
+.book-details .thumb{
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.book-details .subtitle{
+  color: rgba(255,255,255,.7);
+  line-height: 1.5;
+}
+.book-details .sub{
+  margin-top: 10px;
+  color: rgba(255,255,255,.7);
+}
