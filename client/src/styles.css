@@ -32,43 +32,143 @@ body {
 /* =========================
    LAYOUT
 ========================= */
-.container {
-  width: min(var(--max), 100% - 32px);
+/* Layout container (προαιρετικό αλλά βοηθάει) */
+.container{
+  width: 100%;
+  max-width: var(--max, 1080px);
   margin: 0 auto;
+  padding: 16px;
 }
 
-.grid {
+/* MOBILE FIRST: 1 column default */
+.grid{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 40px 0;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+/* Tablet: 2 columns */
+@media (min-width: 768px){
+  .container{ padding: 20px; }
+
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
 }
 
-@media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-}
+/* Desktop: 3 columns */
+@media (min-width: 1024px){
+  .container{ padding: 24px; }
 
+  .grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
 /* =========================
    TOP BAR
 ========================= */
-.topbar {
+/* ===== Topbar / Menu (mobile-first) ===== */
+
+.topbar{
   position: sticky;
   top: 0;
+  z-index: 50;
+
+  /* glassy */
+  background: rgba(11, 16, 32, 0.72); /* ταιριάζει με το --bg σου */
   backdrop-filter: blur(10px);
-  background: rgba(11,15,26,.7);
-  border-bottom: 1px solid var(--border);
-  z-index: 10;
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--line);
 }
 
-.topbar-inner {
+.topbar .menu{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 16px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
+  gap: 10px;
+  flex-wrap: wrap; /* mobile friendly */
 }
+
+.topbar .menu a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  color: var(--muted);
+  text-decoration: none;
+
+  border: 1px solid transparent;
+  background: transparent;
+
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.topbar .menu a:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.10);
+  transform: translateY(-1px);
+}
+
+.topbar .menu a:active{
+  transform: translateY(0px);
+}
+
+.topbar .menu a:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, .35); /* accent glow */
+  border-color: rgba(124, 92, 255, .65);
+}
+
+/* Active link style (με aria-current ή .is-active) */
+.topbar .menu a[aria-current="page"],
+.topbar .menu a.is-active{
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(124, 92, 255, .20), rgba(124, 92, 255, .10));
+  border-color: rgba(124, 92, 255, .55);
+}
+
+/* Optional: “brand” link (πρώτο link) */
+.topbar .menu a.brand{
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.10);
+}
+
+/* Tablet+ spacing */
+@media (min-width: 768px){
+  .topbar .menu{
+    padding: 12px 20px;
+    gap: 12px;
+  }
+  .topbar .menu a{
+    padding: 10px 14px;
+    border-radius: 14px;
+  }
+}
+
+/* Desktop: λίγο πιο “premium” */
+@media (min-width: 1024px){
+  .topbar .menu{
+    padding: 14px 24px;
+  }
+  .topbar{
+    box-shadow: 0 10px 30px rgba(0,0,0,.22);
+  }
+}
+
+
+
 
 .brand {
   display: flex;
@@ -191,7 +291,8 @@ body {
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
-  display: flex;
+  display: block;
+  width: 100%;
   flex-direction: column;
   gap: 14px;
   transition: transform .25s ease, border-color .25s ease;
@@ -334,4 +435,19 @@ body {
 .book-details .sub{
   margin-top: 10px;
   color: rgba(255,255,255,.7);
+}
+
+.submeta{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.details{
+  margin: 12px 0;
+  padding-left: 18px;
+  color: var(--text);
+}
+.details li{
+  margin: 6px 0;
 }
