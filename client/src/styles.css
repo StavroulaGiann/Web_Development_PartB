@@ -76,10 +76,13 @@ body {
    TOP BAR
 ========================= */
 /* ===== Topbar / Menu (mobile-first) ===== */
-.topbar {
+.topbar{
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 9999;
+  background: rgba(10,14,24,.78);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
 .menu.container{
