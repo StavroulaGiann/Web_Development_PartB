@@ -187,19 +187,197 @@ border-bottom: 1px solid var(--border);
 /* =========================
    HERO
 ========================= */
-.hero {
-  padding: 50px 0 30px;
+.home-hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 20px 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: center;
+}
+.home-hero__badge {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  letter-spacing: 0.2px;
 }
 
-.hero h1 {
-  margin: 0 0 10px;
-  font-size: 36px;
+.home-hero__title {
+  margin: 14px 0 8px;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
-.hero p {
-  max-width: 640px;
-  color: var(--muted);
+.home-hero__subtitle {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 16px;
   line-height: 1.6;
+  max-width: 56ch;
+}
+
+
+.home-hero__quick {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.quick-link {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.15s ease, background 0.15s ease, border 0.15s ease;
+}
+.quick-link:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Card on the right */
+.home-card {
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.home-card__title {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.home-card__text {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.55;
+}
+
+.home-card__actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.home-card__hint {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 650;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, filter 0.15s ease, background 0.15s ease, border 0.15s ease;
+  user-select: none;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--primary {
+  color: #0b0e16;
+  background: rgba(124, 92, 255, 1);
+  filter: drop-shadow(0 10px 18px rgba(124, 92, 255, 0.25));
+}
+.btn--primary:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 14px 22px rgba(124, 92, 255, 0.30));
+}
+
+.btn--ghost {
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.btn--ghost:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.btn--soft {
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.btn--soft:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Features row */
+.home-features {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 20px 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.feature-card {
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.feature-card__icon {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feature-card__title {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.feature-card__text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+/* ============ Responsive (mobile-first behavior) ============ */
+@media (max-width: 900px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    padding-top: 44px;
+  }
+  .home-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .home-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* =========================
