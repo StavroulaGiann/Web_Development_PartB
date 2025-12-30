@@ -1,5 +1,5 @@
+import { initMobileMenu, initNavbar, navbarMarkup } from "../components/navbar/navbar";
 import { routes } from "./app-routes";
-
 // --------------------
 // Types
 // --------------------
@@ -109,24 +109,11 @@ export function initApp() {
   const root = document.getElementById("app");
   if (!root) return;
 
-  // Markup που ταιριάζει με το υπάρχον CSS σου: .topbar .menu .brand .logo, και container
   root.innerHTML = `
-    <header class="topbar">
-      <nav class="menu container">
-        <a class="brand" href="/" data-link>
-          <span class="logo"></span>
-          <span>DevAcademy</span>
-        </a>
-
-        <a href="/" data-link>Home</a>
-        <a href="/books" data-link>Books</a>
-        <a href="/courses" data-link>Courses</a>
-        <a href="/register" data-link>Register</a>
-      </nav>
-    </header>
-
+    ${navbarMarkup()}
     <main id="view" class="container"></main>
   `;
+  initMobileMenu();
 
   const view = document.getElementById("view") as HTMLElement;
 
@@ -135,7 +122,7 @@ export function initApp() {
     const handler = routes[path] ?? routes["/"];
 
     setActiveLink(path);
-
+    
     try {
       await handler(view);
     } catch (err: any) {
@@ -149,19 +136,11 @@ export function initApp() {
     }
   };
 
-  // SPA navigation (χωρίς full reload)
-  document.addEventListener("click", (e) => {
-    const a = (e.target as HTMLElement).closest('a[data-link]') as HTMLAnchorElement | null;
-    if (!a) return;
-
-    e.preventDefault();
-    history.pushState(null, "", a.getAttribute("href") || "/");
-    navigate();
-  });
-
-  // Back/forward
-  window.addEventListener("popstate", navigate);
-
+  // ✅ ΟΛΑ τα navbar events εδώ (SPA clicks + hamburger + popstate)
+  initNavbar(navigate, setActiveLink);
+ 
   // First render
+  setActiveLink(window.location.pathname);
   navigate();
 }
+

@@ -23,8 +23,8 @@ export async function renderHome(view: HTMLElement) {
       </p>
 
       <div class="home-card__actions">
-        <a class="btn btn--soft btn--block"href="/register" data-link>Create Account</a>
-        <a class="btn btn--soft btn--block" href="/login.html">I already have an account</a>
+        <a class="btn btn--primary btn--block" href="/register">Create Account</a>
+        <a class="btn btn--primary btn--block" href="/login">I already have an account</a>
       </div>
 
       <p class="home-card__hint">
