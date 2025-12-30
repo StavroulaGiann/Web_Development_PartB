@@ -1,6 +1,9 @@
 const router = require("express").Router();
+const authController = require("../controllers/auth-controller");
 
-// προσωρινό endpoint για τεστ
-router.get("/ping", (req, res) => res.json({ ok: true, route: "auth" }));
+router.post("/register", authController.register);
+
+// προσωρινά ΔΕΝ υπάρχει login στο controller σου
+// router.post("/login", authController.login);
 
 module.exports = router;

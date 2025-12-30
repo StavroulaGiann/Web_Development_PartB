@@ -36,6 +36,8 @@ app.use("/api/books", booksRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/courses", coursesRoutes);
 app.use("/api/enrollments", enrollmentsRoutes);
+app.use("/api/auth", require("./routes/auth-routes"));
+
 // app.use("/api/reviews", reviewsRoutes);
 
 // Error handler (ΠΡΕΠΕΙ τελευταίο)

@@ -79,8 +79,7 @@ body {
   background: rgba(11, 16, 32, 0.72); /* ταιριάζει με το --bg σου */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  border-bottom: 1px solid var(--line);
+border-bottom: 1px solid var(--border);
 }
 
 .topbar .menu{
@@ -450,4 +449,116 @@ body {
 }
 .details li{
   margin: 6px 0;
+}
+
+/* =========================
+   HOME (matches dark/glass theme)
+========================= */
+.home__hero { margin: 10px 0 18px; }
+
+.home__title {
+  font-size: 34px;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.home__subtitle {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile */
+  gap: 14px;
+  margin-top: 18px;
+}
+
+/* glass cards like the rest */
+.home__card {
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.home__card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.home__card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.home__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Home-specific buttons (DON'T touch .btn global) */
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+  transition: transform .12s ease, filter .12s ease, border-color .12s ease, background .12s ease;
+  width: 100%; /* mobile */
+  box-sizing: border-box;
+}
+
+.homeBtn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(124,92,255,.45);
+  background: rgba(255,255,255,.08);
+}
+
+.homeBtn--primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000;
+  border: none;
+}
+
+.homeBtn--primary:hover { filter: brightness(1.05); }
+
+.homeBtn--ghost {
+  background: transparent;
+  border-color: rgba(255,255,255,.28);
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .home__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .homeBtn { width: auto; }
+  .home__actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .home__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+.textInput{
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  outline: none;
+}
+.textInput:focus{
+  border-color: rgba(124, 92, 255, .55);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, .25);
 }
