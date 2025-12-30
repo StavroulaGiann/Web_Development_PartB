@@ -1,5 +1,4 @@
-import type { Course } from "../../app/app.component";
-import { escapeHtml } from "../../app/app.component";
+import { escapeHtml, type Course } from "../../app/app.component";
 export function courseCard(c: Course) {
   const id = (c as any)._id ?? c.id ?? "";
   const title = escapeHtml(c.title ?? "Untitled");

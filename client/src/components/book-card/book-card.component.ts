@@ -1,5 +1,4 @@
-import type { Book } from "../../app/app.component";
-import { escapeHtml } from "../../app/app.component";
+import { escapeHtml, type Book } from "../../app/app.component";
 export function bookCard(b: Book) {
   const title = escapeHtml(b.title ?? "Untitled");
   const desc = escapeHtml(b.shortDescription ?? "");

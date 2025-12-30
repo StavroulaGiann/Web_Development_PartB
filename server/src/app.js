@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-
+const path = require("path");
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -12,6 +12,7 @@ const authRoutes = require("./routes/auth-routes");
 const booksRoutes = require("./routes/books-routes");
 const usersRoutes = require("./routes/users-routes");
 const coursesRoutes = require("./routes/courses-routes");
+const aboutRoutes = require("./routes/about.routes");
 const enrollmentsRoutes = require("./routes/enrollments-routes");
 // Αν έχεις reviews routes, πρόσθεσε κι αυτό:
 // const reviewsRoutes = require("./routes/reviews.routes");
@@ -21,7 +22,9 @@ const app = express();
 // Middleware (global)
 app.use(cors());
 app.use(express.json());
-
+app.use("/api/about", aboutRoutes);
+// static φωτογραφίες
+app.use("/uploads", express.static(path.join(__dirname, "..", "public")));
 // DB connection
 connectDB(process.env.MONGODB_URI);
 

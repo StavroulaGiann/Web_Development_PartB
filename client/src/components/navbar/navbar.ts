@@ -17,6 +17,7 @@ export function navbarMarkup() {
           <a href="/books" data-link>Books</a>
           <a href="/courses" data-link>Courses</a>
           <a href="/register" data-link>Register</a>
+          <a href="/about" data-link>About</a>
         </div>
       </nav>
     </header>

@@ -1,4 +1,4 @@
-import { escapeHtml } from "../../app/app.component";
+import { escapeHtml, } from "../../app/app.component";
 
 // Αν έχεις endpoint έτοιμο, βάλε το εδώ.
 // Αν όχι, άστο null και θα κάνει μόνο "confirmation UI" χωρίς POST.
