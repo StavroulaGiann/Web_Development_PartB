@@ -4,9 +4,9 @@ export async function renderHome(view: HTMLElement) {
   <div class="home-hero__content">
     <p class="home-hero__badge">DevAcademy • Learn by doing</p>
 
-    <h1 class="home-hero__title">Learn. Build. Grow.</h1>
+    <h1 class="home-hero__title">Build Real Skills.</h1>
     <p class="home-hero__subtitle">
-      Books & courses designed to help you become a modern developer—step by step.
+     Carefully designed books and courses for developers at every stage — from first lines of code to advanced systems.
     </p>
 
  <div class="home-hero__quick">

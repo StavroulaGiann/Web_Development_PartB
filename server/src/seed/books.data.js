@@ -21,11 +21,11 @@ module.exports = [
     ratingCount: 87,
     available: true,
     tags: ["python", "Beginner"],
-    image: "assets/img/thumbnails/py.jpg",
+    image: "uploads/thumbnails/py.jpg",
     imageSrcSet: `
-assets/img/thumbnails/py.jpg 320w,
-assets/img/thumbnails/py.jpg 640w,
-assets/img/thumbnails/py.jpg 1024w
+uploads/thumbnails/py.jpg 320w,
+uploads/thumbnails/py.jpg 640w,
+uploads/thumbnails/py.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -51,11 +51,11 @@ assets/img/thumbnails/py.jpg 1024w
     ratingCount: 65,
     available: true,
     tags: ["HTML5", "CSS3", "Responsive"],
-    image: "assets/img/thumbnails/html-css.png",
+    image: "uploads/thumbnails/html-css.png",
     imageSrcSet: `
-assets/img/thumbnails/html-css.png 320w,
-assets/img/thumbnails/html-css.png 640w,
-assets/img/thumbnails/html-css.png 1024w
+uploads/thumbnails/html-css.png 320w,
+uploads/thumbnails/html-css.png 640w,
+uploads/thumbnails/html-css.png 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -81,11 +81,11 @@ assets/img/thumbnails/html-css.png 1024w
     ratingCount: 54,
     available: true,
     tags: ["Java", "Programming"],
-    image: "assets/img/thumbnails/java.jpeg",
+    image: "uploads/thumbnails/java.jpeg",
     imageSrcSet: `
-assets/img/thumbnails/java.jpeg 320w,
-assets/img/thumbnails/java.jpeg 640w,
-assets/img/thumbnails/java.jpeg 1024w
+uploads/thumbnails/java.jpeg 320w,
+uploads/thumbnails/java.jpeg 640w,
+uploads/thumbnails/java.jpeg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -111,11 +111,11 @@ assets/img/thumbnails/java.jpeg 1024w
     ratingCount: 31,
     available: true,
     tags: ["Networks", "TCP/IP"],
-    image: "assets/img/thumbnails/comp-sci.jpg",
+    image: "uploads/thumbnails/comp-sci.jpg",
     imageSrcSet: `
-assets/img/thumbnails/comp-sci.jpg 320w,
-assets/img/thumbnails/comp-sci.jpg 640w,
-assets/img/thumbnails/comp-sci.jpg 1024w
+uploads/thumbnails/comp-sci.jpg 320w,
+uploads/thumbnails/comp-sci.jpg 640w,
+uploads/thumbnails/comp-sci.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -141,11 +141,11 @@ assets/img/thumbnails/comp-sci.jpg 1024w
     ratingCount: 102,
     available: true,
     tags: ["sap", "web", "Intermediate"],
-    image: "assets/img/thumbnails/sap.jpg",
+    image: "uploads/thumbnails/sap.jpg",
     imageSrcSet: `
-assets/img/thumbnails/sap.jpg 320w,
-assets/img/thumbnails/sap.jpg 640w,
-assets/img/thumbnails/sap.jpg 1024w
+uploads/thumbnails/sap.jpg 320w,
+uploads/thumbnails/sap.jpg 640w,
+uploads/thumbnails/sap.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -170,11 +170,11 @@ assets/img/thumbnails/sap.jpg 1024w
     ratingCount: 28,
     available: true,
     tags: ["security", "intermediate"],
-    image: "assets/img/thumbnails/cyber.jpg",
+    image: "uploads/thumbnails/cyber.jpg",
     imageSrcSet: `
-assets/img/thumbnails/cyber.jpg 320w,
-assets/img/thumbnails/cyber.jpg 640w,
-assets/img/thumbnails/cyber.jpg 1024w
+uploads/thumbnails/cyber.jpg 320w,
+uploads/thumbnails/cyber.jpg 640w,
+uploads/thumbnails/cyber.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -200,11 +200,11 @@ assets/img/thumbnails/cyber.jpg 1024w
     ratingCount: 46,
     available: false,
     tags: ["networks", "intermediate"],
-    image: "assets/img/thumbnails/diktya-ypol.jpg",
+    image: "uploads/thumbnails/diktya-ypol.jpg",
     imageSrcSet: `
-assets/img/thumbnails/diktya-ypol.jpg 320w,
-assets/img/thumbnails/diktya-ypol.jpg 640w,
-assets/img/thumbnails/diktya-ypol.jpg 1024w
+uploads/thumbnails/diktya-ypol.jpg 320w,
+uploads/thumbnails/diktya-ypol.jpg 640w,
+uploads/thumbnails/diktya-ypol.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -230,11 +230,11 @@ assets/img/thumbnails/diktya-ypol.jpg 1024w
     ratingCount: 39,
     available: true,
     tags: ["c++", "Programming"],
-    image: "assets/img/thumbnails/c++.jpg",
+    image: "uploads/thumbnails/c++.jpg",
     imageSrcSet: `
-assets/img/thumbnails/c++.jpg 320w,
-assets/img/thumbnails/c++.jpg 640w,
-assets/img/thumbnails/c++.jpg 1024w
+uploads/thumbnails/c++.jpg 320w,
+uploads/thumbnails/c++.jpg 640w,
+uploads/thumbnails/c++.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -260,11 +260,11 @@ assets/img/thumbnails/c++.jpg 1024w
     ratingCount: 39,
     available: true,
     tags: ["html", "css", "js", "web"],
-    image: "assets/img/thumbnails/istos.jpg",
+    image: "uploads/thumbnails/istos.jpg",
     imageSrcSet: `
-assets/img/thumbnails/istos.jpg 320w,
-assets/img/thumbnails/istos.jpg 640w,
-assets/img/thumbnails/istos.jpg 1024w
+uploads/thumbnails/istos.jpg 320w,
+uploads/thumbnails/istos.jpg 640w,
+uploads/thumbnails/istos.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -290,11 +290,11 @@ assets/img/thumbnails/istos.jpg 1024w
     ratingCount: 39,
     available: true,
     tags: ["html", "css", "js", "web"],
-    image: "assets/img/thumbnails/asyrmata.jpg",
+    image: "uploads/thumbnails/asyrmata.jpg",
     imageSrcSet: `
-assets/img/thumbnails/asyrmata.jpg 320w,
-assets/img/thumbnails/asyrmata.jpg 640w,
-assets/img/thumbnails/asyrmata.jpg 1024w
+uploads/thumbnails/asyrmata.jpg 320w,
+uploads/thumbnails/asyrmata.jpg 640w,
+uploads/thumbnails/asyrmata.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -320,11 +320,11 @@ assets/img/thumbnails/asyrmata.jpg 1024w
     ratingCount: 28,
     available: true,
     tags: ["security", "beginner", "cyberlaw"],
-    image: "assets/img/thumbnails/cyber-law.jpg",
+    image: "uploads/thumbnails/cyber-law.jpg",
     imageSrcSet: `
-assets/img/thumbnails/cyber-law.jpg 320w,
-assets/img/thumbnails/cyber-law.jpg 640w,
-assets/img/thumbnails/cyber-law.jpg 1024w
+uploads/thumbnails/cyber-law.jpg 320w,
+uploads/thumbnails/cyber-law.jpg 640w,
+uploads/thumbnails/cyber-law.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
@@ -338,7 +338,7 @@ assets/img/thumbnails/cyber-law.jpg 1024w
     language: "GR",
     pages: 280,
     year: 2004,
-    author: 'Πομπόρτσης Aν.” “Παπαδημητρίου Γ.',
+    author: 'Πομπόρτσης Aν. Παπαδημητρίου Γ.',
     shortDescription:
       "Μια ολοκληρωμένη εισαγωγή στην κρυπτογραφία, στις εφαρμογές ασφαλείας δικτύων και στην ασφάλεια συστημάτων.",
     longDescription:
@@ -350,11 +350,11 @@ assets/img/thumbnails/cyber-law.jpg 1024w
     ratingCount: 28,
     available: true,
     tags: ["security", "advanced"],
-    image: "assets/img/thumbnails/net-sec.jpg",
+    image: "uploads/thumbnails/net-sec.jpg",
     imageSrcSet: `
-assets/img/thumbnails/net-sec.jpg 320w,
-assets/img/thumbnails/net-sec.jpg 640w,
-assets/img/thumbnails/net-sec.jpg 1024w
+uploads/thumbnails/net-sec.jpg 320w,
+uploads/thumbnails/net-sec.jpg 640w,
+uploads/thumbnails/net-sec.jpg 1024w
 `.trim(),
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },

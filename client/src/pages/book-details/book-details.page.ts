@@ -37,10 +37,6 @@ export async function renderBookDetails(view: HTMLElement) {
           ` : ""}
         </section>
 
-        <div class="grid" style="grid-template-columns: 1fr;">
-          ${book.image ? `<img class="thumb" src="${escapeHtml(String(book.image))}" alt="${escapeHtml(String(book.title ?? "Book"))}" />` : ""}
-        </div>
-
         <div class="panel">
           <h3>Πληροφορίες</h3>
 

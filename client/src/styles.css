@@ -267,22 +267,50 @@ body {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 6px;
 }
 
 .quick-link {
-  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,.06); /* soft fill */
+  border: 0;                          /* NO frame */
+  color: rgba(255,255,255,.9);
   text-decoration: none;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.03);
-  transition: transform 0.15s ease, background 0.15s ease, border 0.15s ease;
+
+  font-weight: 600;
+  letter-spacing: .2px;
+
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease,
+    color .18s ease;
 }
 .quick-link:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.10);
+  box-shadow: 0 22px 56px rgba(0,0,0,.45);
+  color: #fff;
+}
+
+/* Active */
+.quick-link:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 26px rgba(0,0,0,.3);
+}
+
+/* Focus (accessibility αλλά διακριτικό) */
+.quick-link:focus-visible {
+  outline: 2px solid rgba(124,92,255,.6);
+  outline-offset: 4px;
 }
 
 /* Card on the right */
@@ -379,10 +407,31 @@ body {
 }
 
 .feature-card {
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.03);
+  border: 0; /* <- remove frame */
+  border-radius: 20px;
+  padding: 22px 22px;
+
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.085);
+  box-shadow: 0 26px 70px rgba(0,0,0,.45);
+}
+
+.feature-card h3 {
+  margin: 10px 0 8px;
+  font-size: 18px;
+  letter-spacing: .2px;
+}
+.feature-card p {
+  margin: 0;
+  color: rgba(255,255,255,.70);
+  line-height: 1.5;
 }
 
 .feature-card__icon {
@@ -495,29 +544,7 @@ body {
 /* =========================
    COURSE CARD
 ========================= */
-.card {
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,.10),
-    rgba(255,255,255,.04)
-  );
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow);
-  display: block;
-  width: 100%;
-  flex-direction: column;
-  gap: 14px;
-  transition: transform .25s ease, border-color .25s ease;
-   text-decoration: none;
-  color: inherit;
-}
 
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(124,92,255,.45);
-}
 
 .card-top {
   display: flex;
@@ -565,13 +592,6 @@ body {
 }
 
 
-.cover{
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.12);
-}
 .sub{
   margin-top: 6px;
   color: rgba(255,255,255,.68);
@@ -1037,3 +1057,224 @@ body {
   border: 2px solid rgba(255,255,255,0.15);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 28px;
+
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .2px;
+  position: relative;
+  transition:
+    color .18s ease,
+    transform .18s ease;
+}
+
+/* Hover */
+.back:hover {
+  color: rgba(255,255,255,.95);
+  transform: translateX(-3px);
+}
+
+/* Focus (accessibility αλλά διακριτικό) */
+.back:focus-visible {
+  outline: 2px solid rgba(124,92,255,.6);
+  outline-offset: 4px;
+}
+
+.back::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 1px;
+  background: rgba(255,255,255,.35);
+
+  transition: width .2s ease;
+}
+
+.back:hover::after {
+  width: 100%;
+}
+.cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+  background: rgba(255,255,255,.04);
+}
+
+.book-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.book-hero__cover img {
+  width: 100%;
+  max-width: 360px;
+
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+
+  border-radius: 18px;
+  box-shadow: 0 28px 70px rgba(0,0,0,.55);
+
+  background: rgba(255,255,255,.04);
+}
+@media (max-width: 768px) {
+  .book-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .book-hero__cover {
+    order: -1; /* εικόνα πάνω */
+    text-align: center;
+  }
+
+  .book-hero__cover img {
+    max-width: 280px;
+    margin: 0 auto 24px;
+  }
+}
+
+/* Card (borderless, premium) */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+  border-radius: 22px;
+  text-decoration: none;
+  color: inherit;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.07),
+    rgba(255,255,255,.035)
+  );
+  box-shadow: 0 22px 60px rgba(0,0,0,.45);
+
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 90px rgba(0,0,0,.60);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.085),
+    rgba(255,255,255,.04)
+  );
+}
+
+
+/* Subtle shine (πολύ premium) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40% -30% auto -30%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 60%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+/* =========================
+   BOOK CARDS (override)
+   Put at the VERY END
+========================= */
+
+/* Το grid των βιβλίων (αν χρησιμοποιείς .grid παντού, άστο. Αλλιώς βάλε .books-grid) */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+}
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
+/* Book card only */
+.card.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+  border-radius: 22px;
+
+  border: 0 !important;              /* σκοτώνει το παλιό border */
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+  box-shadow: 0 22px 60px rgba(0,0,0,.45);
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 90px rgba(0,0,0,.60);
+  background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.04));
+}
+
+/* Book cover only */
+.card.book-card .cover.book-cover {
+  width: 100%;
+  height: auto !important;           /* σκοτώνει height:170px */
+  aspect-ratio: 3 / 4;               /* 🔒 book look */
+  object-fit: cover;
+
+  border-radius: 16px;
+  margin-bottom: 14px;
+
+  border: 0 !important;              /* σκοτώνει παλιά border */
+  background: rgba(255,255,255,.04);
+
+  box-shadow: 0 18px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card.book-card:hover .cover.book-cover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 28px 70px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.09);
+}
+
+/* Subtle shine */
+.card.book-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% -30% auto -30%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 60%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.card.book-card:hover::before { opacity: 1; }

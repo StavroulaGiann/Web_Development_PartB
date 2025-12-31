@@ -25,6 +25,7 @@ app.use(express.json());
 app.use("/api/about", aboutRoutes);
 // static φωτογραφίες
 app.use("/uploads", express.static(path.join(__dirname, "..", "public")));
+app.use("/uploads", express.static("uploads"));
 // DB connection
 connectDB(process.env.MONGODB_URI);
 

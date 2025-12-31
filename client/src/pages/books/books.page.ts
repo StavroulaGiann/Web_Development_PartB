@@ -1,4 +1,21 @@
 import { escapeHtml, loadBooks } from "../../app/app.component";
+const API_ORIGIN = "http://localhost:5000";
+
+function bookImageUrl(path?: string) {
+  if (!path) return ""; // ή βάλε placeholder
+  const p = String(path).trim();
+
+  // αν είναι ήδη full url (http/https) το αφήνουμε όπως είναι
+  if (/^https?:\/\//i.test(p)) return p;
+
+  // αν έρχεται "uploads/..." το κάνουμε "/uploads/..."
+  const normalized = p.startsWith("/") ? p : `/${p}`;
+
+  // αν δεν ξεκινάει με /uploads, το βάζουμε (προαιρετικό safety)
+  const finalPath = normalized.startsWith("/uploads/") ? normalized : `/uploads/${normalized.replace(/^\//, "")}`;
+
+  return `${API_ORIGIN}${finalPath}`;
+}
 
 export async function renderBooks(view: HTMLElement) {
   view.innerHTML = `
@@ -39,10 +56,22 @@ export async function renderBooks(view: HTMLElement) {
               </div>
             `
             : "";
-
+          
         return `
-          <a class="card" href="/books/details?id=${encodeURIComponent(b._id)}" data-link>
-            ${b.image ? `<img class="cover" src="${escapeHtml(b.image)}" alt="${escapeHtml(b.title)}" />` : ""}
+          <a class="card book-card" href="/books/details?id=${encodeURIComponent(b._id)}" data-link>
+${
+  b.image
+    ? `<img
+        class="cover book-cover"
+        src="${escapeHtml(bookImageUrl(b.image))}"
+        srcset="${escapeHtml(bookImageUrl((b as any).imageSrcSet || ""))}"
+        sizes="${escapeHtml((b as any).imageSizes || "(max-width: 768px) 100vw, 300px")}"
+        alt="${escapeHtml(b.title)}"
+        loading="lazy"
+      />`
+    : ""
+}
+
 
             <div class="card-top">
               <div>
@@ -80,3 +109,4 @@ export async function renderBooks(view: HTMLElement) {
     footer.textContent = "";
   }
 }
+
