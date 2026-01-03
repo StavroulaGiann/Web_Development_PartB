@@ -6,6 +6,7 @@ import { renderCourses } from "../pages/courses/courses.page";
 import { renderHome } from "../pages/home/home.page";
 import { renderRegister } from "../pages/register/register.page";
 import type { RouteHandler } from "./app.component";
+import { renderLogin } from "../pages/login/login.page";
 
 export const routes: Record<string, RouteHandler> = {
   "/": renderHome,
@@ -15,5 +16,6 @@ export const routes: Record<string, RouteHandler> = {
   "/courses/details": renderCourseDetails,
   "/register": renderRegister,
   "/about": renderAboutPage,
+  "/login": renderLogin,
   
 };

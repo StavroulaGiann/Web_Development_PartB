@@ -14,6 +14,7 @@ const usersRoutes = require("./routes/users-routes");
 const coursesRoutes = require("./routes/courses-routes");
 const aboutRoutes = require("./routes/about.routes");
 const enrollmentsRoutes = require("./routes/enrollments-routes");
+const reviewsRoutes = require("./routes/reviews-routes");
 // Αν έχεις reviews routes, πρόσθεσε κι αυτό:
 // const reviewsRoutes = require("./routes/reviews.routes");
 
@@ -40,7 +41,7 @@ app.use("/api/books", booksRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/courses", coursesRoutes);
 app.use("/api/enrollments", enrollmentsRoutes);
-app.use("/api/auth", require("./routes/auth-routes"));
+app.use("/api/reviews", reviewsRoutes);
 
 // app.use("/api/reviews", reviewsRoutes);
 

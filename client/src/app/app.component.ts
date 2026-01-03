@@ -1,15 +1,29 @@
 import { initMobileMenu, initNavbar, navbarMarkup } from "../components/navbar/navbar";
 import { routes } from "./app-routes";
+import { isLoggedIn } from "../services/auth";
 
-// ✅ Re-export API ώστε τα pages να τα παίρνουν από εδώ
+// --------------------
+// Re-export API
+// --------------------
 export {
   getBookByKey,
-  loadAbout, loadBook, loadBooks, loadCourse, loadCourses
+  loadAbout,
+  loadBook,
+  loadBooks,
+  loadCourse,
+  loadCourses,
+  login,
+  enroll,
+  loadCourseReviews,
+  createReview,
+  loadEnrollmentsByUser, // ✅ πρόσθεσε αυτό
 } from "../services/api-services";
 
 export type {
-  AboutData, Book,
-  Course, TeamMember
+  AboutData,
+  Book,
+  Course,
+  TeamMember
 } from "../services/api-services";
 
 // --------------------
@@ -18,7 +32,7 @@ export type {
 export type RouteHandler = (view: HTMLElement) => Promise<void> | void;
 
 // --------------------
-// UI Helpers (ΑΝΗΚΟΥΝ ΕΔΩ)
+// UI helpers
 // --------------------
 export function escapeHtml(s = "") {
   return s
@@ -36,23 +50,9 @@ export function getIdFromQuery(): string {
 }
 
 // --------------------
-// Router helpers
+// Navbar render (🔥 ΚΛΕΙΔΙ)
 // --------------------
-function setActiveLink(pathname: string) {
-  document.querySelectorAll("a[data-link]").forEach((a) => {
-    const href = (a as HTMLAnchorElement).getAttribute("href") || "";
-    if (href === pathname) {
-      (a as HTMLAnchorElement).setAttribute("aria-current", "page");
-    } else {
-      (a as HTMLAnchorElement).removeAttribute("aria-current");
-    }
-  });
-}
-
-// --------------------
-// App init
-// --------------------
-export function initApp() {
+export function renderNavbar() {
   const root = document.getElementById("app");
   if (!root) return;
 
@@ -62,12 +62,46 @@ export function initApp() {
   `;
 
   initMobileMenu();
+}
+
+// --------------------
+// Active link helper
+// --------------------
+function setActiveLink(pathname: string) {
+  document.querySelectorAll("a[data-link]").forEach((a) => {
+    const href = (a as HTMLAnchorElement).getAttribute("href") || "";
+    if (href === pathname) {
+      a.setAttribute("aria-current", "page");
+    } else {
+      a.removeAttribute("aria-current");
+    }
+  });
+}
+
+// --------------------
+// App init
+// --------------------
+export function initApp() {
+  renderNavbar();
 
   const view = document.getElementById("view") as HTMLElement;
+
+  const PUBLIC_ROUTES = new Set<string>([
+    "/",
+    "/login",
+    "/register"
+  ]);
 
   const navigate = async () => {
     const path = window.location.pathname;
     const handler = routes[path] ?? routes["/"];
+
+    // 🔒 Route guard
+    if (!PUBLIC_ROUTES.has(path) && !isLoggedIn()) {
+      history.replaceState({}, "", "/");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      return;
+    }
 
     setActiveLink(path);
 

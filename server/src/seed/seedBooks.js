@@ -1,27 +1,25 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
-const connectDB = require("../config/db");
-const Book = require("../models/Book");
+const dotenv = require("dotenv");
+
+const Book = require("../models/Books");
 const books = require("./books.data");
 
-async function seed() {
+dotenv.config();
+
+async function seedBooks() {
   try {
-    await connectDB(process.env.MONGODB_URI);
+     await mongoose.connect(process.env.MONGODB_URI);
+    console.log("✅ MongoDB connected");
 
-    for (const b of books) {
-      await Book.updateOne({ id: b.id }, { $set: b }, { upsert: true });
-    }
+    await Book.deleteMany();
+    await Book.insertMany(books);
 
-    const count = await Book.countDocuments();
-    console.log(`✅ Seed complete. Books in DB: ${count}`);
-
-    await mongoose.connection.close();
+    console.log("✅ Books seeded successfully");
     process.exit(0);
   } catch (err) {
-    console.error("❌ Seed failed:", err.message);
-    try { await mongoose.connection.close(); } catch {}
+    console.error("❌ Seed books error:", err);
     process.exit(1);
   }
 }
 
-seed();
+seedBooks();
