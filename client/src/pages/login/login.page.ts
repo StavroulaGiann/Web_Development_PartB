@@ -3,25 +3,34 @@ import { setUser } from "../../services/auth";
 
 export function renderLogin(view: HTMLElement) {
   view.innerHTML = `
-    <section class="page">
-      <h1>Sign in</h1>
+    <section class="auth-page">
+      <div class="auth-card">
+        <h1 class="auth-title">Sign in</h1>
 
-      <form id="loginForm" class="form">
-        <label>Email</label>
-        <input name="email" type="email" autocomplete="email" required />
+        <form id="loginForm" class="auth-form">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
 
-        <label>Password</label>
-        <input
-          name="password"
-          type="password"
-          autocomplete="current-password"
-          required
-          minlength="8"
-        />
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+              placeholder="••••••••"
+            />
+          </div>
 
-        <button type="submit">Login</button>
-        <p id="msg" class="form-msg" aria-live="polite"></p>
-      </form>
+          <button class="auth-btn" type="submit">Login</button>
+
+          <p id="msg" class="auth-msg" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   `;
 
@@ -31,6 +40,7 @@ export function renderLogin(view: HTMLElement) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "Loading...";
+    msg.classList.remove("is-error", "is-success");
 
     const fd = new FormData(form);
     const email = String(fd.get("email") || "").trim();
@@ -41,22 +51,21 @@ export function renderLogin(view: HTMLElement) {
 
       if (!data?.user?._id) {
         msg.textContent = "Login failed.";
+        msg.classList.add("is-error");
         return;
       }
 
-      // ✅ Save user session
       setUser(data.user);
-
-      // 🔥 ΞΑΝΑ-ΚΑΝΕ RENDER ΤΟ NAVBAR
       renderNavbar();
 
       msg.textContent = `Welcome ${data.user.firstName || ""}!`;
+      msg.classList.add("is-success");
 
-      // 👉 Redirect σε protected area
       history.pushState({}, "", "/courses");
       window.dispatchEvent(new PopStateEvent("popstate"));
     } catch (err: any) {
       msg.textContent = err?.message || "Login failed";
+      msg.classList.add("is-error");
     }
   });
 }

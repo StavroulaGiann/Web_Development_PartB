@@ -1,22 +1,16 @@
 import { initMobileMenu, initNavbar, navbarMarkup } from "../components/navbar/navbar";
-import { routes } from "./app-routes";
 import { isLoggedIn } from "../services/auth";
+import { routes } from "./app-routes";
 
 // --------------------
 // Re-export API
 // --------------------
 export {
-  getBookByKey,
+  createReview, enroll, getBookByKey,
   loadAbout,
   loadBook,
   loadBooks,
-  loadCourse,
-  loadCourses,
-  login,
-  enroll,
-  loadCourseReviews,
-  createReview,
-  loadEnrollmentsByUser, // ✅ πρόσθεσε αυτό
+  loadCourse, loadCourseReviews, loadCourses, loadEnrollmentsByUser, login
 } from "../services/api-services";
 
 export type {
@@ -122,4 +116,25 @@ export function initApp() {
 
   setActiveLink(window.location.pathname);
   navigate();
+}
+
+export const API_ORIGIN = "http://localhost:5000";
+
+export function mustGet<T extends Element>(root: ParentNode, selector: string): T {
+  const el = root.querySelector(selector);
+  if (!el) throw new Error(`Missing element: ${selector}`);
+  return el as T;
+}
+
+export function imageUrl(path?: string) {
+  if (!path) return "";
+  const p = String(path).trim();
+  if (/^https?:\/\//i.test(p)) return p;
+
+  const normalized = p.startsWith("/") ? p : `/${p}`;
+  const finalPath = normalized.startsWith("/uploads/")
+    ? normalized
+    : `/uploads/${normalized.replace(/^\//, "")}`;
+
+  return `${API_ORIGIN}${finalPath}`;
 }

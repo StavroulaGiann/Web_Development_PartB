@@ -1,9 +1,9 @@
 import {
+  createReview,
   escapeHtml,
   getIdFromQuery,
   loadCourse,
   loadCourseReviews,
-  createReview,
 } from "../../app/app.component";
 
 export async function renderCourseDetails(view: HTMLElement) {
@@ -66,23 +66,54 @@ export async function renderCourseDetails(view: HTMLElement) {
           </div>
         </div>
 
-        <div class="details-card">
-          <h2 class="details-card__title">Reviews</h2>
+       <div class="details-card reviews-card">
+  <div class="reviews-head">
+    <h2 class="details-card__title">Reviews</h2>
+    <p class="reviews-sub" id="reviewsSub"></p>
+  </div>
 
-          <div id="reviewsList">Loading reviews...</div>
+  <div id="reviewsList" class="reviews-list">Loading reviews...</div>
 
-          <h3 class="details-section-title" style="margin-top:16px;">Leave a review</h3>
-          <form id="reviewForm" class="form">
-            <label>Rating (1-5)</label>
-            <input name="rating" type="number" min="1" max="5" required />
+  <div class="divider"></div>
 
-            <label>Comment</label>
-            <textarea name="comment" rows="3" placeholder="Write something..."></textarea>
+  <h3 class="details-section-title">Leave a review</h3>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <p id="reviewMsg" class="form-msg" aria-live="polite"></p>
-          </form>
-        </div>
+  <form id="reviewForm" class="review-form">
+    <div class="review-grid">
+      <div class="field">
+  <label>Rating</label>
+
+  <div class="star-rating" role="radiogroup" aria-label="Rating from 1 to 5">
+    ${[1,2,3,4,5].map(n => `
+      <button
+        type="button"
+        class="star"
+        data-value="${n}"
+        role="radio"
+        aria-checked="false"
+        aria-label="${n} star${n===1 ? "" : "s"}"
+      >★</button>
+    `).join("")}
+  </div>
+
+  <!-- αυτό είναι που θα διαβάσει το FormData -->
+  <input name="rating" type="hidden" value="" required />
+</div>
+
+
+      <div class="field field-wide">
+        <label>Comment</label>
+        <textarea name="comment" rows="3" placeholder="Write something..." required></textarea>
+      </div>
+    </div>
+
+    <div class="review-actions">
+      <p id="reviewMsg" class="form-msg" aria-live="polite"></p>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
 
         <a class="details-back" href="/courses">← Back to courses</a>
       </section>
@@ -124,6 +155,71 @@ export async function renderCourseDetails(view: HTMLElement) {
     const reviewForm = view.querySelector("#reviewForm") as HTMLFormElement | null;
     const reviewMsg = view.querySelector("#reviewMsg") as HTMLParagraphElement | null;
 
+    // ⭐ Star rating widget
+function initStarRating(root: HTMLElement) {
+  const stars = Array.from(root.querySelectorAll<HTMLButtonElement>(".star-rating .star"));
+  const hidden = root.querySelector<HTMLInputElement>('input[name="rating"]');
+
+  if (!stars.length || !hidden) return;
+
+  let current = Number(hidden.value) || 0;
+
+  const paint = (val: number) => {
+    stars.forEach((btn) => {
+      const n = Number(btn.dataset.value);
+      const on = n <= val;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-checked", on ? "true" : "false");
+      btn.tabIndex = n === Math.max(val, 1) ? 0 : -1; // focus on selected (or first)
+    });
+  };
+
+  const set = (val: number) => {
+    current = val;
+    hidden.value = String(val);
+    paint(val);
+  };
+
+  // click
+  stars.forEach((btn) => {
+    btn.addEventListener("click", () => set(Number(btn.dataset.value)));
+  });
+
+  // keyboard (left/right/up/down, 1-5)
+  root.addEventListener("keydown", (e) => {
+    const key = e.key;
+
+    if (key >= "1" && key <= "5") {
+      e.preventDefault();
+      set(Number(key));
+      stars[Number(key) - 1]?.focus();
+      return;
+    }
+
+    if (["ArrowLeft", "ArrowDown"].includes(key)) {
+      e.preventDefault();
+      const next = Math.max(1, (current || 1) - 1);
+      set(next);
+      stars[next - 1]?.focus();
+      return;
+    }
+
+    if (["ArrowRight", "ArrowUp"].includes(key)) {
+      e.preventDefault();
+      const next = Math.min(5, (current || 1) + 1);
+      set(next);
+      stars[next - 1]?.focus();
+      return;
+    }
+  });
+
+  // initial
+  paint(current);
+}
+
+if (reviewForm) initStarRating(reviewForm);
+
+
     async function refreshReviews() {
       if (!reviewsList) return;
 
@@ -140,26 +236,30 @@ export async function renderCourseDetails(view: HTMLElement) {
           return;
         }
 
-        reviewsList.innerHTML = reviews
-          .map((r: any) => {
-            const first = r?.userId?.firstName ? escapeHtml(r.userId.firstName) : "User";
-            const last = r?.userId?.lastName ? escapeHtml(r.userId.lastName) : "";
-            const name = `${first} ${last}`.trim();
+       const sub = view.querySelector("#reviewsSub") as HTMLParagraphElement | null;
+if (sub) sub.textContent = `${reviews.length} review${reviews.length === 1 ? "" : "s"}`;
 
-            const rating = typeof r?.rating === "number" ? r.rating : "?";
-            const comment = r?.comment ? `<p>${escapeHtml(String(r.comment))}</p>` : "";
+reviewsList.innerHTML = reviews
+  .map((r: any) => {
+    const first = r?.userId?.firstName ? escapeHtml(r.userId.firstName) : "User";
+    const last = r?.userId?.lastName ? escapeHtml(r.userId.lastName) : "";
+    const name = `${first} ${last}`.trim();
 
-            return `
-              <article class="review" style="padding:12px 0;border-top:1px solid rgba(255,255,255,0.08);">
-                <div style="display:flex;justify-content:space-between;gap:12px;">
-                  <strong>${name}</strong>
-                  <span>⭐ ${rating}/5</span>
-                </div>
-                ${comment}
-              </article>
-            `;
-          })
-          .join("");
+    const rating = typeof r?.rating === "number" ? r.rating : "?";
+    const comment = r?.comment ? escapeHtml(String(r.comment)) : "";
+
+    return `
+      <article class="review-item">
+        <div class="review-top">
+          <strong class="review-name">${name}</strong>
+          <span class="review-rating">⭐ ${rating}/5</span>
+        </div>
+        ${comment ? `<p class="review-comment">${comment}</p>` : ""}
+      </article>
+    `;
+  })
+  .join("");
+
       } catch (e: any) {
         reviewsList.innerHTML = `<p>${escapeHtml(e?.message || "Failed to load reviews")}</p>`;
       }
@@ -208,3 +308,4 @@ export async function renderCourseDetails(view: HTMLElement) {
     view.innerHTML = `<p>Failed to load course details.</p>`;
   }
 }
+
