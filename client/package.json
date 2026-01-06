@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "sirv": "^3.0.2",
     "typescript": "~5.9.3",
     "vite": "^7.3.0"
   }

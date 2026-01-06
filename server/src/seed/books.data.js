@@ -1,32 +1,54 @@
+// This module exports an array of book objects. Each object represents a single book with metadata
+
 module.exports = [
   {
+    // Unique identifier for internal use (routing, lookups, favorites)
     id: "py-book",
-    title:
-      "Εισαγωγή στον Υπολογισμό και τον Προγραμματισμό με την Python, 3η έκδοση",
+    // Main book title 
+    title: "Εισαγωγή στον Υπολογισμό και τον Προγραμματισμό με την Python, 3η έκδοση",
+    // Optional subtitle shown below the main title
     subtitle: "Βασισμένο σε ένα massive open online course (MOOC) του MIT.",
+    // High-level category used for filtering 
     category: "programming",
+    // Difficulty level of the book
     level: "beginner",
+    // Language of the book content
     language: "GR",
+    // Total number of pages in the book
     pages: 616,
+    // Year of publication
     year: 2022,
+    // Author of the book
     author: "Guttag John V.",
+    // Short description used in cards
     shortDescription:
       "Το παρόν βιβλίο εισάγει τον αναγνώστη με μικρή ή καθόλου εμπειρία στον προγραμματισμό, χρησιμοποιώντας τη γλώσσα Python.",
+    // Full description shown on the details page
     longDescription:
       "Στην παρούσα τρίτη έκδοση η βασική επεξηγηματική ύλη επεκτείνεται με επιπλέον προγραμματιστικά παραδείγματα και πολύ περισσότερες «ασκήσεις εμπέδωσης», γεγονός που την καθιστά μια σχετικά ομαλή εισαγωγή στον προγραμματισμό για τους αρχάριους. Σε ένα νέο κεφάλαιο επιδεικνύεται η χρήση του πακέτου pandas για την ανάλυση δεδομένων χρονοσειρών. Όλος ο κώδικας έχει γραφτεί εκ νέου ώστε να συμμορφώνεται με τα πρότυπα του PEP 8. Πέρα από τα παραδοσιακά θέματα, το βιβλίο πραγματεύεται επίσης ένα ευρύ φάσμα θεμάτων που δεν περιλαμβάνονται συνήθως στα εισαγωγικά βιβλία, όπως οπτική αναπαράσταση πληροφορίας, προσομοιώσεις για τη μοντελοποίηση της τυχαιότητας, υπολογιστικές τεχνικές για την κατανόηση δεδομένων, στατιστικές τεχνικές που πληροφορούν (και παραπληροφορούν) και προβλήματα βελτιστοποίησης και δυναμικός προγραμματισμός. Το βιβλίο περιλαμβάνει επίσης έναν συνοπτικό οδηγό αναφοράς της Python 3.",
+    // Highlighted book
     isFeatured: true,
+    // Marks newly added books
     isNew: true,
+    // Indicates popularity 
     popular: true,
+    // Average user rating (0–5 scale)
     rating: 4.7,
+    // Total number of ratings
     ratingCount: 87,
+    // Whether the book is currently available
     available: true,
+    // Tags used for search, filters, and recommendations
     tags: ["python", "Beginner"],
+    // Default image path
     image: "uploads/thumbnails/py.jpg",
+    // Responsive image sources for different screen resolutions
     imageSrcSet: `
 uploads/thumbnails/py.jpg 320w,
 uploads/thumbnails/py.jpg 640w,
 uploads/thumbnails/py.jpg 1024w
 `.trim(),
+  // Defines how the browser should choose image sizes
     imageSizes: "(max-width: 768px) 100vw, 300px",
   },
 

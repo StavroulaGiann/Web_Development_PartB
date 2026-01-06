@@ -1,17 +1,17 @@
-// server/src/middleware/validateRequest.js
-// Lightweight request validator (no extra deps).
-// Usage: router.post("/login", validateRequest({ body: { email: {...}, password: {...} } }), controller)
 
+// Checks if a value looks like a MongoDB ObjectId
 function isObjectIdLike(v) {
   return typeof v === "string" && /^[0-9a-fA-F]{24}$/.test(v);
 }
 
+// Tries to convert a value to a number if possible
 function toNumberMaybe(v) {
   if (typeof v === "number") return v;
   if (typeof v === "string" && v.trim() !== "" && !Number.isNaN(Number(v))) return Number(v);
   return v;
 }
 
+// Normalizes a value based on validation rules (trim, lowercase, number coercion, etc.)
 function normalizeValue(val, rule) {
   let v = val;
 
@@ -22,9 +22,13 @@ function normalizeValue(val, rule) {
   return v;
 }
 
+// Validates a single field against its rules
 function validateField(name, val, rule, where, errors, outObj) {
+
+  // Check if the field is present
   const present = val !== undefined && val !== null && val !== "";
 
+  // If not required and not present, skip validation
   if (rule.required && !present) {
     errors.push({ field: name, in: where, message: "Field is required." });
     return;
@@ -33,9 +37,10 @@ function validateField(name, val, rule, where, errors, outObj) {
   // If not required and not present -> ok
   if (!present) return;
 
+  // Normalize value before validation
   const v = normalizeValue(val, rule);
 
-  // type checks
+  // Type validation
   if (rule.type === "string" && typeof v !== "string") {
     errors.push({ field: name, in: where, message: "Must be a string." });
     return;
@@ -49,7 +54,7 @@ function validateField(name, val, rule, where, errors, outObj) {
     return;
   }
 
-  // string constraints
+  // String-specific validations
   if (typeof v === "string") {
     if (rule.minLen != null && v.length < rule.minLen) {
       errors.push({ field: name, in: where, message: `Must be at least ${rule.minLen} chars.` });
@@ -76,7 +81,7 @@ function validateField(name, val, rule, where, errors, outObj) {
     }
   }
 
-  // number constraints
+  // Number-specific validations
   if (typeof v === "number") {
     if (rule.min != null && v < rule.min) {
       errors.push({ field: name, in: where, message: `Must be >= ${rule.min}.` });
@@ -88,13 +93,13 @@ function validateField(name, val, rule, where, errors, outObj) {
     }
   }
 
-  // enum
+  // Enum validation (allowed values)
   if (rule.enum && !rule.enum.includes(v)) {
     errors.push({ field: name, in: where, message: `Must be one of: ${rule.enum.join(", ")}` });
     return;
   }
 
-  // custom validator
+  // Custom validator function
   if (typeof rule.validate === "function") {
     const msg = rule.validate(v);
     if (typeof msg === "string" && msg) {
@@ -103,23 +108,16 @@ function validateField(name, val, rule, where, errors, outObj) {
     }
   }
 
-  // write normalized value back (optional)
+  // Save the normalized value back to the request object
   outObj[name] = v;
 }
 
-/**
- * schema example:
- * {
- *   body: { email: {required:true, type:"string", format:"email", trim:true, lowercase:true} },
- *   params: { id: {required:true, type:"string"} },
- *   query: { page: {type:"number", coerceNumber:true, min:1} }
- * }
- */
+// Middleware factory that validates request data using a schema
 function validateRequest(schema = {}) {
   return (req, res, next) => {
     const errors = [];
 
-    // we will optionally overwrite with normalized versions
+    // Validate and normalize request body
     if (schema.body) {
       const out = { ...req.body };
       for (const [field, rule] of Object.entries(schema.body)) {
@@ -128,6 +126,7 @@ function validateRequest(schema = {}) {
       req.body = out;
     }
 
+    // Validate and normalize route params
     if (schema.params) {
       const out = { ...req.params };
       for (const [field, rule] of Object.entries(schema.params)) {
@@ -136,6 +135,7 @@ function validateRequest(schema = {}) {
       req.params = out;
     }
 
+     // Validate and normalize query string
     if (schema.query) {
       const out = { ...req.query };
       for (const [field, rule] of Object.entries(schema.query)) {
@@ -144,6 +144,7 @@ function validateRequest(schema = {}) {
       req.query = out;
     }
 
+     // If validation errors exist, return 400 Bad Request
     if (errors.length) {
       return res.status(400).json({
         message: "Validation error.",
@@ -151,6 +152,7 @@ function validateRequest(schema = {}) {
       });
     }
 
+     // Continue to the next middleware/controller
     next();
   };
 }

@@ -1,14 +1,33 @@
 const mongoose = require("mongoose");
 
+// Enrollment schema definition
 const enrollmentSchema = new mongoose.Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
-    courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true, index: true },
+    // Reference to the enrolled user
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
+    },
+
+    // Reference to the enrolled course
+    courseId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+      required: true,
+      index: true,
+    },
   },
-  { timestamps: true }
+  {
+    // Automatically adds createdAt and updatedAt timestamps
+    timestamps: true,
+  }
 );
 
-// για να μην κάνει διπλές εγγραφές ο ίδιος χρήστης στο ίδιο μάθημα
+// Compound unique index to prevent the same user
+// from enrolling in the same course more than once
 enrollmentSchema.index({ userId: 1, courseId: 1 }, { unique: true });
 
+// Export Enrollment model
 module.exports = mongoose.model("Enrollment", enrollmentSchema);
