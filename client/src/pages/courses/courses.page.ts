@@ -141,7 +141,7 @@ export async function renderCourses(view: HTMLElement) {
       <div class="grid" id="coursesGrid"></div>
 
       <div class="empty" id="emptyState" style="display:none; margin-top:14px;">
-        Δεν βρέθηκαν μαθήματα με αυτά τα φίλτρα.
+        No courses found for these filters.
       </div>
     </div>
   </section>
