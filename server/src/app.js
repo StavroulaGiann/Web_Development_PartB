@@ -36,8 +36,10 @@ app.use(express.json());
 app.use("/api/about", aboutRoutes);
 
 // Serve static files (images, uploads, etc.)
+app.use("/team", express.static(path.join(__dirname, "..", "public", "team")));
+
+// Books images
 app.use("/uploads", express.static(path.join(__dirname, "..", "public")));
-app.use("/uploads", express.static("uploads"));
 
 
 //Database connection

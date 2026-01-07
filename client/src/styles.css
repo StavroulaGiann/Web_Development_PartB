@@ -1107,3 +1107,62 @@ select option:hover,
   border: 1px solid rgba(255,255,255,.12);
   box-shadow: 0 18px 40px rgba(0,0,0,.35);
 }
+
+/* Right side of navbar: user info + logout */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logged-in user's name */
+.navUser {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text, #f1f5f9);
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px; /* pill shape */
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Logout button (secondary style) */
+#logoutBtn {
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: var(--text, #f1f5f9);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover & focus states */
+#logoutBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+#logoutBtn:focus-visible {
+  outline: 2px solid var(--accent, #7c5cff);
+  outline-offset: 2px;
+}
+
+/* Mobile: stack a bit tighter */
+@media (max-width: 640px) {
+  .navRight {
+    gap: 8px;
+  }
+
+  .navUser {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+
+  #logoutBtn {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+}

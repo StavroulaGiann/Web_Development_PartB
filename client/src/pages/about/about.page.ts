@@ -1,6 +1,7 @@
 import { escapeHtml } from "../../app/app.component";
 import { loadAbout } from "../../services/api-services";
 
+const API_BASE = "http://localhost:5000"; 
 
 //Renders the "About" page into the given container element.
 
@@ -22,11 +23,11 @@ export async function renderAboutPage(container: HTMLElement) {
       (m) => `
       <article class="card team-card">
         <!-- Team photo URL is used directly; ensure the backend returns trusted URLs -->
-        <img class="team-photo" src="${m.photoUrl}" alt="${escapeHtml(m.name)}">
+       <img class="team-photo" src="${API_BASE}${m.photoUrl}" alt="${escapeHtml(m.name)}">
 
         <!-- Visible text content is escaped to prevent HTML injection -->
         <h3>${escapeHtml(m.name)}</h3>
-        <p class="muted">${escapeHtml(m.role)}</p>
+        <p class="muted">${escapeHtml(m.email)}</p>
         <p>${escapeHtml(m.bio)}</p>
       </article>
     `

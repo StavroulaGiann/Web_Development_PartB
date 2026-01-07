@@ -52,11 +52,12 @@ export type Course = {
 };
 
 export type TeamMember = {
-  _id: string;      // MongoDB id
-  name: string;     // Display name
-  role: string;     // Job title / responsibility
-  bio: string;      // Short bio text
-  photoUrl: string; // URL/path to profile photo
+  _id?: string;
+  name: string;
+  email: string;
+  bio: string;
+  photoUrl: string;
+  order?: number;
 };
 
 export type AboutData = {

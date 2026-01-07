@@ -6,7 +6,10 @@
     "dev": "nodemon src/app.js",
     "start": "node src/app.js",
     "seed:books": "node src/seed/seedBooks.js",
-    "seed:courses": "node src/seed/seedCourses.js"
+    "seed:courses": "node src/seed/seedCourses.js",
+	"seed:team": "node src/seed/teamMembers.seed.js"
+
+
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

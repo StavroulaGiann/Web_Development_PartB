@@ -6,8 +6,13 @@ const TeamMemberSchema = new mongoose.Schema(
     // Full name of the team member
     name: { type: String, required: true },
 
-    // Role or position in the team
-    role: { type: String, required: true },
+    // Email address of the team member
+    email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    trim: true,
+  },
 
     // Short biography or description
     bio: { type: String, required: true },

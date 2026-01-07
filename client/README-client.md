@@ -24,7 +24,7 @@ npm install
 ## Εκκίνηση της εφαρμογής
 1. Εκκίνηση της βάσης δεδομένων MongoDB
 2. npm install / npm start
-3. Εκτέλεση των seeds scripts για αρχικοποιηση βάσης με : npm run seed:books και npm run seed:courses 
+3. Εκτέλεση των seeds scripts για αρχικοποιηση βάσης με : npm run seed:books, npm run seed:courses, npm run seed:team για φωτογραφίες μελών.
 4. Για εμφάνιση του site όπως διαμορφώθηκε στο Μέρος Α : npm i -D sirv
 5. npm run dev 
 

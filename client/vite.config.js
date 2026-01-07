@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";          // Vite configuration helper
-import path from "node:path";                 // Node.js path utilities
-import sirv from "sirv";                      // Static file server (dev)
+import path from "node:path"; // Node.js path utilities
+import sirv from "sirv"; // Static file server (dev)
+import { defineConfig } from "vite"; // Vite configuration helper
 
 /**
  * Custom plugin για να σερβίρεται το Part A
@@ -46,6 +46,7 @@ export default defineConfig({
 
       // Redirect uploads (εικόνες κλπ) στον backend
       "/uploads": "http://localhost:5000",
+      
     },
   },
 });
