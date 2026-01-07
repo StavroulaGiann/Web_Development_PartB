@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <!-- Ορισμός κωδικοποίησης χαρακτήρων σε UTF-8 ώστε να υποστηρίζονται σωστά ελληνικοί χαρακτήρες -->
+  <meta charset="UTF-8" />
+
+  <!-- Τίτλος της σελίδας που εμφανίζεται στην καρτέλα του προγράμματος περιήγησης -->
+  <title>devAcademy | Books</title>
+
+  <!-- Σύνδεση με reset.css, theme.css, layout.css και components.css για τη μορφοποίηση της σελίδας -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<!-- Το data-page attribute χρησιμοποιείται για styling ή για την Javascript λογική -->
+<body data-page="books">
+  <div class="page">
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <!-- Κεντρικό navigation bar -->
+        <nav class="nav">
+          <!-- Logo της εφαρμογής που λειτουργεί και ως σύνδεσμος προς την αρχική σελίδα -->
+          <a href="index.html" class="logo">
+            <div class="logo-badge">&lt;/&gt;</div>
+            <div class="logo-text">devAcademy</div>
+          </a>
+          <!-- Links που οδηγούν στις υπόλοιπες σελίδες. Η κλάση "active" επιτρέπει την υπογράμμιση στο μενού της σελίδας στην οποία βρισκόμαστε -->
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="books.html"class="active">Books</a>
+            <a href="about.html">About</a>
+          </div>
+          <!-- Call-to-action κουμπί για Register -->
+          <div class="nav-cta">
+            <a href="register.html" class="btn btn-primary">Register</a>
+          </div>
+
+          <!--Κουμπί toggle για την εμφάνιση και απόκρυψη (show / hide) του mobile navigation menu. Τα aria attributes βελτιώνουν την χρηστικότητα για τη πλοήγηση
+          από όλους τους χρήστες ανεξαρτήτως -->
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Άνοιγμα μενού"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <span></span>
+          </button>
+        </nav>
+        <!-- Mobile navigation menu που εμφανίζεται όταν η οθόνη είναι μικρή -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+          <a href="index.html">Home</a>
+          <a href="courses.html">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="about.html">About</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="container">
+      <!-- Επικεφαλίδα σελίδας βιβλιοθήκης: Παρουσιάζει το περιεχόμενο της ενότητας (library) και καθοδηγεί τον χρήστη στη διαδικασία αναζήτησης/φιλτραρίσματος βιβλίων.-->
+        <section class="courses-page-header">
+          <!-- Διακοσμητικό badge (pill) για context της σελίδας -->
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Browse devAcademy library</span>
+          </div>
+          <!-- Κύριος τίτλος σελίδας -->
+          <h1 class="section-title">devAcademy Library</h1>
+          <!-- Σύντομη περιγραφή της σελίδας -->
+          <p class="section-subtitle">
+          Informatics books that complement online courses.
+          </p>
+        </section>
+
+        <!-- Κύρια διάταξη: φίλτρα (aside) + λίστα αποτελεσμάτων (books list). -->
+        <section class="courses-layout">
+        <!-- Φίλτρα : aria-label βοηθά την κατανόηση της ενότητας από screen readers. -->
+          <aside class="courses-filters" aria-label="Φίλτρα βιβλίων">
+            <h2 class="section-title">Filters</h2>
+            <p class="section-subtitle">
+              Filter books by category, language and availability.
+            </p>
+            <!-- Φόρμα φίλτρων βιβλίων: Τα πεδία εισόδου αξιοποιούνται από JavaScript για δυναμικό φιλτράρισμα -->
+            <form id="booksFilters" class="filters-form">
+              <!-- Search input: φιλτράρει με βάση τίτλο/λέξεις-κλειδιά -->
+              <div class="field-group">
+                <label for="bookSearchInput">Search</label>
+                <input
+                  type="search"
+                  id="bookSearchInput"
+                  name="q"
+                  placeholder="Title, author or keywords..."
+                />
+              </div>
+              <!-- Φίλτρα κατηγορίας -->
+              <div class="filters-row">
+                <div class="field-group">
+                  <label for="bookCategoryFilter">Category</label>
+                  <select id="bookCategoryFilter" name="category">
+                    <option value="">All</option>
+                    <option value="programming">Programming</option>
+                    <option value="web">Web</option>
+                    <option value="networks">Networks</option>
+                    <option value="security">Security</option>
+                  </select>
+                </div>
+                <!-- Φίλτρα επιπέδου -->
+                <div class="field-group">
+                  <label for="bookLevelFilter">Level</label>
+                  <select id="bookLevelFilter" name="level">
+                    <option value="">All</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Φίλτρα διαθεσιμότητας  -->
+              <div class="filters-row">
+                <div class="field-group">
+                  <label for="bookAvailabilityFilter">Availability</label>
+                  <select id="bookAvailabilityFilter" name="availability">
+                    <option value="">All</option>
+                    <option value="available">Available only</option>
+                  </select>
+                </div>
+                <!-- Φίλτρα  γλώσσας -->
+                <div class="field-group">
+                  <label for="bookLanguageFilter">Language</label>
+                  <select id="bookLanguageFilter" name="language">
+                    <option value="">All</option>
+                    <option value="GR">Greek</option>
+                    <option value="EN">English</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </aside>
+
+          <!-- Λίστα βιβλίων -->
+          <div class="courses-list">
+            <!-- Header αποτελεσμάτων: συνολικός αριθμός + ταξινόμηση -->
+            <div class="courses-list-header">
+              <div>
+                <h2 class="section-title">All books</h2>
+              <!--booksCount ενημερώνεται δυναμικά μέσω JavaScript ανάλογα με τα φίλτρα και τα διαθέσιμα δεδομένα.-->
+                <p class="section-subtitle">
+                  <span id="booksCount">0 books</span> found
+                </p>
+              </div>
+              <!-- Επιλογή ταξινόμησης αποτελεσμάτων -->
+              <div class="courses-sort">
+                <label for="bookSortBy">Sort by</label>
+                <select id="bookSortBy" name="sort">
+                  <option value="featured">Suggested</option>
+                  <option value="rating">Best Rated</option>
+                  <option value="newest">Newest</option>
+                  <option value="pages">Pages</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Grid με κάρτες βιβλίων. Γεμίζει δυναμικά μέσω JavaScript -->
+            <div id="booksGrid" class="cards-grid">
+            </div>
+
+            <!-- Empty state :  Εμφανίζεται όταν τα φίλτρα δεν επιστρέφουν αποτελέσματα. -->
+            <div id="booksEmpty" class="empty-state" hidden>
+              No books found for these filters.
+              Try changing category or keywords.
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-meta">
+            © 2025 devAcademy · E-Learning Πληροφορικής
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Σύνδεση με Javascript αρχεία για UI συμπεριφορά και responsiveness -->
+  <script src="assets/js/data/books.js" defer></script>
+  <script src="assets/js/ui/menu.js" defer></script>
+  <script src="assets/js/ui/responsive.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

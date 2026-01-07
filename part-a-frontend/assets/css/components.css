@@ -1,0 +1,1192 @@
+/* Logo */
+
+/* Wrapper του logo: στοίχιση badge + κείμενο */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-lg);
+  letter-spacing: var(--logo-letter-spacing);
+
+  /* Το gradient ορίζεται ως local CSS variable για reuse στα παιδιά */
+  --logo-gradient: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+}
+
+/* Gradient text styling για badge + text */
+.logo-badge,
+.logo-text {
+  font-weight: 900;
+  background: var(--logo-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons (base + variants)*/
+
+/* Βασική κλάση button: κοινά χαρακτηριστικά για όλα τα κουμπιά */
+.btn {
+  border-radius: var(--btn-radius-pill);
+  padding: 0.45rem 1.1rem;
+  font-size: var(--btn-font-size);
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  /* Κρατάει το label σε μία γραμμή */
+  white-space: nowrap;
+}
+
+/* Primary button: gradient φόντο, έντονη έμφαση (CTA) */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--btn-primary-bg-from),
+    var(--btn-primary-bg-to)
+  );
+  color: var(--btn-primary-text);
+  font-weight: 600;
+  border: none;
+  margin-top: 0.5rem;
+  box-shadow: var(--btn-primary-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover: μικρό “lift” και πιο έντονη σκιά */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-primary-shadow-hover);
+}
+
+/* Ghost button: διακριτικό, με border */
+.btn-ghost {
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--text-main);
+  transition: background 0.15s ease, border 0.15s ease, transform 0.15s ease;
+}
+
+/* Hover state για ghost */
+.btn-ghost:hover {
+  background: var(--btn-ghost-bg-hover);
+  border-color: var(--btn-ghost-border-hover);
+  transform: translateY(-2px);
+}
+
+
+
+/* Section typography (titles/subtitles/links) */
+
+/* Τίτλος section */
+.section-title {
+  font-size: var(--fs-section-title);
+  font-weight: var(--fw-bold);
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: rgba(254, 255, 255, 0.94);
+  padding-left: 1rem;
+}
+
+/* Υπότιτλος section */
+.section-subtitle {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+/* Link μέσα σε section (accent) */
+.section-link {
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* Generic card container */
+.card {
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  padding: 0.9rem 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+
+
+/* Learning track / course / resource cards*/
+
+/* Κοινό styling για track-card, course-card, resource-card */
+.track-card,
+.course-card,
+.resource-card {
+  background: 
+    var(--card-glow-1),
+    var(--card-bg-default);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border-default);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--card-transition-speed),
+              box-shadow var(--card-transition-speed);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover effect: σκιά + lift */
+.track-card:hover,
+.course-card:hover,
+.resource-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(calc(var(--card-hover-lift) * 1));
+}
+
+/* CSS variable για το spin animation  */
+:root { --team-photo-spin-animation: team-photo-spin 20s linear infinite; }
+
+/* Τίτλος track */
+.track-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.35rem;
+}
+
+/* Περιγραφή track */
+.track-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+/*Hero section*/
+
+/* Hero title */
+.hero-title {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-bold);
+  font-family: var(--font-heading);
+}
+
+/* Gradient σε span μέσα στον hero τίτλο */
+.hero-title span {
+  background: linear-gradient(
+    to right,
+    var(--hero-gradient-from),
+    var(--hero-gradient-to)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Container για CTA area στο hero */
+.hero-cta {
+  margin-top: 2.4rem;
+}
+
+/* pills layout κάτω από το hero */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.0rem;
+}
+
+/* Μικρό κείμενο στα meta pills */
+.hero-meta span {
+  font-size: var(--fs-xs);
+}
+
+/* Έμφαση σε αριθμούς/keywords */
+.hero-meta strong {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+
+
+/* Hero right header (dots + filename)*/
+
+/* Γραμμή πάνω από code block (dots αριστερά, filename δεξιά) */
+.hero-right-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* dots αριστερά, filename δεξιά */
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Το “filename” label */
+.hero-filename {
+  color: #9ca3af;       /* χρώμα */
+  font-size: 0.78rem;   /* μέγεθος */
+  letter-spacing: 0.03em;
+}
+
+
+
+/* Pill (badge-like UI element)*/
+
+/* Pill wrapper */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  /* “μπάρα” μορφή */
+  padding: 0.2rem 0.9rem;
+  border-radius: 999px;
+
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Dot */
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--pill-dot);
+  box-shadow: 0 0 0 4px var(--pill-dot-glow);
+}
+
+
+
+/* Header / Nav */
+
+/* Sticky header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+}
+
+/* Min height για navbar area */
+.nav {
+  min-height: 64px;                 /* ύψος header */
+}
+
+
+
+/* CTA container */
+
+/* CTA wrapper */
+.cta {
+  margin-top: 1.6rem;
+  display: inline-block;
+  padding-left: 1.5rem;
+}
+
+/* Στοχεύει primary button μέσα σε CTA */
+.cta a.btn-primary {
+  margin-top: 1.5rem;  
+  display: inline-block;
+}
+
+
+
+/*  Footer */
+
+/* Footer wrapper */
+footer {
+  background: var(--footer-bg);
+  padding: 2.8rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid var(--footer-border);
+}
+
+/* Footer layout container */
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Brand area (logo + text) */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Περιγραφή brand */
+.footer-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+/* Κάθε column στο footer */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Τίτλος column */
+.footer-column h4 {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+/* Footer links */
+.footer-column a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+/* Hover: accent */
+.footer-column a:hover {
+  color: var(--accent);
+}
+
+/* Copyright area */
+.footer-copy {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Desktop layout για footer */
+@media (min-width: 880px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+
+
+/* Register page styles */
+
+/* Spacing για register section */
+.register-section {
+  padding: 2.5rem 0 3rem;
+}
+
+/* Layout: info card + form card */
+.register-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Info card (αριστερά / πάνω σε mobile) */
+.register-info-card {
+  flex: 1;
+  padding: 1.5rem 1.7rem;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+              rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Info card title */
+.register-info-card h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Subtitle κάτω από τον τίτλο */
+.register-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Benefits list */
+.register-benefits {
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Spacing μεταξύ benefit items */
+.register-benefits li {
+  margin-bottom: 0.35rem;
+}
+
+/* Highlight pill/label */
+.register-highlight {
+  font-size: 0.85rem;
+  color: var(--accent);
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+/* Form card (δεξιά / κάτω σε mobile) */
+.register-form-card {
+  flex: 1;
+  padding: 1.5rem 1.7rem;
+  border-radius: var(--radius-xl);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Form card heading */
+.register-form-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Form card description */
+.register-form-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+/* Form rows (stacked on mobile) */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Κάθε field wrapper */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Label styling */
+.form-field label {
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+/* Inputs/selects: ίδιο στυλ με τα pills */
+.register-form-card input,
+.register-form-card select {
+  background-color: var(--input-bg);
+  border-radius: 999px;
+  border: 1px solid var(--input-border);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* Focus state για input/select */
+.register-form-card input:focus,
+.register-form-card select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+}
+
+/* Εναλλακτικό focus (γενικό) για fields */
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+}
+
+/* Hint κείμενο κάτω από field */
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Error message placeholder (κρατάει χώρο) */
+.field-error {
+  display: block;          /* ώστε να πιάνει χώρο */
+  color: #f97373;
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+  min-height: 1rem;        /* κρατάει χώρο για το μήνυμα */
+}
+
+/* Radio group vertical layout */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Checkbox label */
+.checkbox-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Inline field alignment tweak */
+.form-field-inline {
+  align-items: flex-start;
+}
+
+/* Actions area (submit / links) */
+.form-actions {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Alternate text (login link κ.λπ.) */
+.form-alt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Alternate link accent */
+.form-alt a {
+  color: var(--accent);
+}
+
+/* Responsive layout για register (2 στήλες σε desktop) */
+@media (min-width: 880px) {
+  .register-grid {
+    flex-direction: row;
+  }
+
+  .form-row {
+    flex-direction: row;
+  }
+
+  .form-row .form-field {
+    flex: 1;
+  }
+}
+
+/* Status message area (success/error feedback) */
+.form-status {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  min-height: 1.2rem;
+  font-weight: 500;
+}
+
+
+
+/*  Mobile menu dropdown */
+
+/* Dropdown container (κρυφό by default) */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+
+  background: var(--mobile-menu-bg);
+  border-bottom: 1px solid var(--mobile-menu-border);
+
+  padding: var(--mobile-menu-padding-y) var(--mobile-menu-padding-x);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mobile-menu-item-gap);
+  z-index: 80;
+}
+
+/* Open state */
+.mobile-menu.is-open {
+  display: flex;
+}
+
+/* Links μέσα στο mobile menu (εκτός από buttons) */
+.mobile-menu a:not(.btn) {
+  display: block;
+  width: 100%;
+  padding: var(--mobile-menu-item-padding-y) 0;
+  color: var(--mobile-menu-text);
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+/* Underline effect */
+.mobile-menu a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  width: 0%;
+  height: 2px;
+  background: var(--mobile-menu-underline);
+  border-radius: 4px;
+  box-shadow: var(--mobile-menu-underline-glow);
+  transition: width 0.25s ease;
+}
+
+/* Hover: αλλάζει χρώμα */
+.mobile-menu a:not(.btn):hover {
+  color: var(--mobile-menu-text-hover);
+}
+
+/* Hover: underline μεγαλώνει */
+.mobile-menu a:not(.btn):hover::after {
+  width: 60%;
+}
+
+/* Hamburger icon */
+
+/* Button wrapper */
+.mobile-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 3 bars  */
+.mobile-toggle span,
+.mobile-toggle span::before,
+.mobile-toggle span::after {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--text-main);
+  border-radius: 4px;
+  transition: 0.25s ease;
+  position: relative;
+}
+
+/* Top & bottom bars positioning */
+.mobile-toggle span::before,
+.mobile-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.mobile-toggle span::before {
+  top: -7px;
+}
+
+.mobile-toggle span::after {
+  top: 7px;
+}
+
+/* Open animation: μετατροπή σε “X” */
+.mobile-toggle.is-open span {
+  background: transparent;
+}
+
+.mobile-toggle.is-open span::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.is-open span::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* Utilities */
+
+/* Prevent scroll στο body όταν είναι ανοιχτό modal/menu */
+.no-scroll {
+  overflow: hidden;
+}
+
+
+/* Modal */
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999;
+  padding: 1rem;
+}
+
+/* Open state */
+.modal.open {
+  display: flex;
+}
+
+/* Modal content box */
+.modal-box {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Close button (top-right) */
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+
+
+/* Course cards (details) */
+
+/* Header: τίτλος/metadata αριστερά + (π.χ. actions) δεξιά */
+.course-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+/* Course title */
+.course-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Subtitle / category text */
+.course-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Badges container */
+.course-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+/* Badge base styling */
+.course-badge {
+  font-size: var(--badge-font-size);
+  padding: var(--badge-padding-y) var(--badge-padding-x);
+  border-radius: var(--badge-radius);
+  border: 1px solid var(--badge-border);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+}
+
+/* Primary badge variant */
+.course-badge--primary {
+  border-color: var(--badge-primary-border);
+  background: var(--badge-primary-bg);
+  color: var(--badge-primary-text);
+}
+
+/* Meta info line */
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Meta items */
+.course-meta span {
+  font-size: var(--fs-xs);
+  opacity: 0.85;
+}
+
+/* Actions row στο κάτω μέρος της κάρτας */
+.course-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* Buttons μέσα στο course actions */
+.course-actions .btn {
+  margin-top: auto;
+  padding-inline: 0.9rem;
+}
+
+/* Rating text */
+.course-rating {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* “Stars / score” highlight */
+.course-rating strong {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* Empty state για όταν δεν υπάρχουν μαθήματα */
+.empty-state {
+  margin-top: 1.5rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-xl);
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px dashed var(--border-subtle);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+
+
+/* Team cards  */
+
+/* Team card overrides */
+.team-card {
+  border-radius: var(--about-card-radius);
+  clip-path: none;
+  transform: none; 
+}
+
+/* Photo wrapper */
+.team-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 55%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Εικόνα: cover + spin animation */
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: var(--team-photo-spin-animation);
+  transform-origin: center center;
+}
+
+/* Team content layout */
+.team-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Name */
+.team-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Role */
+.team-role {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Meta definition list layout */
+.team-meta {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* Meta titles */
+.team-meta dt {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* Meta values */
+.team-meta dd {
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* Links μέσα σε meta */
+.team-meta a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.team-meta a:hover {
+  text-decoration: underline;
+}
+
+/* Bio paragraph */
+.team-bio {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Contact card */
+.contact-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Spin keyframes */
+@keyframes team-photo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 3D tilt cards (global)  */
+
+/* Base tilt card: enable 3D transforms */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+}
+
+/* Hover override (πιο γρήγορη απόκριση) */
+.tilt-card:hover {
+  transition: transform 0.1s ease-out;
+}
+
+/* Glow overlay layer */
+.tilt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.12),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+}
+
+/* State όταν γίνεται tilting */
+.tilt-card.is-tilting {
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+/* Glow visible όταν γίνεται tilting */
+.tilt-card.is-tilting::after {
+  opacity: 1;
+}
+
+
+
+/* Scroll reveal */
+
+/* Default hidden state */
+.reveal-on-scroll {
+  opacity: var(--reveal-opacity-start);
+  transform: translateY(var(--reveal-translateY));
+  transition: opacity var(--reveal-duration) ease-out,
+              transform var(--reveal-duration) ease-out;
+}
+
+/* Visible state (με JS class toggle) */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* Course card link wrapper  */
+
+/* Κάνει όλη την κάρτα clickable (link) */
+.course-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* Book cards (image + hover info) */
+
+/* Book card wrapper */
+.book-card {
+  height: 100%;
+}
+
+/* Inner wrapper: relative για overlay positioning */
+.book-card-inner {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: visible;
+  height: 550px;
+}
+
+/* Cover container (background + crop) */
+.book-card-cover {
+  width: 100%;
+  height : 100%;
+  background: radial-gradient(circle at top, rgba(15,23,42,0.7), #020617);
+  overflow: hidden;
+}
+
+/* Cover image: contain ώστε να φαίνεται ολόκληρο το εξώφυλλο */
+.book-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* Overlay info: εμφανίζεται στο hover */
+.book-card-info {
+  position: absolute;
+  inset: 0;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.96),
+    rgba(15, 23, 42, 0.7),
+    rgba(15, 23, 42, 0.1)
+  );
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+/* Hover: overlay visible */
+.book-card:hover .book-card-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover: μικρό zoom + σκοτείνιασμα στο cover */
+.book-card:hover .book-card-cover img {
+  transform: scale(1.04);
+  filter: brightness(0.30);
+}
+
+/* Βάζει τα actions στο κάτω μέρος του overlay */
+.book-card .course-actions {
+  margin-top: auto;
+}
+
+
+
+/* Floating video card  */
+
+/* Video card container */
+.video-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  max-width: 420px;
+}
+
+/* HTML5 video element: full size + aspect ratio */
+.video-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Embedded iframe (YouTube etc.) */
+.video-card iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+
+
+/* NAV: Glow underline on hover */
+
+/* Base nav link styling */
+.nav-links a {
+  position: relative;
+  padding-bottom: 4px;
+  color: var(--nav-link-color);
+  transition: color 0.25s ease;
+}
+
+/* Underline pseudo-element */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: var(--nav-underline-color);
+  border-radius: 4px;
+  box-shadow: var(--nav-underline-glow);
+  transition: width 0.25s ease;
+}
+
+/* Hover + active text color */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--nav-link-hover);
+}
+
+/* Hover underline grows */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active underline stays full width */
+.nav-links a.active::after {
+  width: 100%;
+}
+
+
+/* Hero prompt image sizing */
+
+/* Enlarges the hero code image (custom scaling/positioning) */
+.hero-code-img {
+  display: block;
+  width: 140% ;      /* μεγαλώνει την εικόνα οριζόντια */
+  max-width: none !important;
+  transform: translateX(-11%) scale(0.8);  /* έξτρα zoom + λίγο προς τα αριστερά */
+  transform-origin: center;
+}
+
+/* Left column tweak (alignment) */
+.hero-left {
+  margin-left: 0;
+}

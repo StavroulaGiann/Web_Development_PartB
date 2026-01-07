@@ -1,0 +1,226 @@
+:root {
+  /* Γενικά (βασικά colors/tokens) */
+  --bg: #05060a;                           /* βασικό background (fallback / γενικό) */
+  --bg-alt: #0d1117;                       /* εναλλακτικό background */
+  --card-bg: #111827;                      /* background καρτών/blocks */
+  --accent: #38bdf8;                       /* κύριο accent χρώμα */
+  --accent-alt: #0ea5e9;                   /* secondary accent */
+  --accent-soft: rgba(56, 189, 248, 0.12); /* απαλό accent για glows */
+  --text-main: #e5e7eb;                    /* κύριο κείμενο */
+  --text-muted: #9ca3af;                   /* δευτερεύον/“muted” κείμενο */
+  --border-subtle: #1f2933;                /* διακριτικό border */
+  --max-width: 1120px;                     /* μέγιστο πλάτος layout */
+
+  /* Ακτίνες / σκιές (global) */
+  --radius-lg: 18px;                       /* μεγάλη ακτίνα */
+  --radius-xl: 24px;                       /* extra-large ακτίνα */
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55); /* “soft” shadow */
+
+  /* Logo */
+  --logo-gap: 0.5rem;                      /* απόσταση badge/κειμένου logo */
+  --logo-letter-spacing: 0.03em;           /* letter spacing logo */
+
+  /* CONTAINER / LAYOUT */
+  --max-width: 1120px;                     /* max width του container */
+  --page-padding-x: 2rem;                  /* οριζόντιο padding desktop */
+  --page-padding-x-mobile: 1.25rem;        /* οριζόντιο padding mobile */
+  --section-gap: 3rem;                     /* κάθετη απόσταση sections */
+  --section-header-gap: 0.5rem;            /* gap σε headers sections */
+  --grid-gap: 1.4rem;                      /* gap σε grids */
+  --nav-gap: 1.6rem;                       /* gap στοιχείων nav */
+  --nav-height: 64px;                      /* ύψος navbar */
+
+  /* BREAKPOINTS (tokens) */
+  --bp-tablet: 880px;                      /* tablet breakpoint */
+  --bp-mobile: 600px;                      /* mobile breakpoint */
+
+  /* TYPOGRAPHY – οικογένειες */
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;   /* default font */
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;/* headings font */
+
+  /* TYPOGRAPHY – βάρη */
+  --fw-regular: 400;                       /* normal */
+  --fw-medium: 500;                        /* medium */
+  --fw-semibold: 600;                      /* semibold */
+  --fw-bold: 700;                          /* bold */
+
+  /* TYPOGRAPHY – μεγέθη */
+  --fs-xs: 0.8rem;                         /* extra small */
+  --fs-sm: 0.86rem;                        /* small */
+  --fs-base: 0.95rem;                      /* base */
+  --fs-lg: 1.05rem;                        /* large */
+  --fs-xl: 1.25rem;                        /* extra large */
+  --fs-section-title: 1.25rem;             /* τίτλοι sections */
+  --fs-hero: clamp(2.1rem, 4vw, 2.7rem);   /* responsive hero title */
+
+  /* BUTTONS */
+  --btn-radius-pill: 999px;                /* pill radius */
+  --btn-font-size: 0.9rem;                 /* μέγεθος κειμένου κουμπιών */
+  --btn-padding-y: 0.55rem;                /* padding y */
+  --btn-padding-x: 1.4rem;                 /* padding x */
+
+  --btn-primary-bg-from: #38bdf8;          /* gradient start */
+  --btn-primary-bg-to: #0ea5e9;            /* gradient end */
+  --btn-primary-text: #0b1220;             /* κείμενο primary button */
+  --btn-primary-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);       /* shadow default */
+  --btn-primary-shadow-hover: 0 14px 35px rgba(56, 189, 248, 0.55); /* shadow hover */
+
+  --btn-ghost-bg: rgba(255, 255, 255, 0.03);        /* ghost background */
+  --btn-ghost-bg-hover: rgba(255, 255, 255, 0.08);  /* ghost hover background */
+  --btn-ghost-border: rgba(255, 255, 255, 0.15);    /* ghost border */
+  --btn-ghost-border-hover: rgba(255, 255, 255, 0.25);/* ghost hover border */
+
+  /* FOOTER */
+  --footer-bg: linear-gradient(180deg, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 1)); /* footer gradient */
+  --footer-border: rgba(148, 163, 184, 0.14);                                  /* top border footer */
+
+  /* PILL (hero/meta pill) */
+  --pill-border: rgba(56, 189, 248, 0.35);  /* pill border */
+  --pill-bg: radial-gradient(circle at left, rgba(56, 189, 248, 0.18), transparent 55%),
+            rgba(15, 23, 42, 0.95);         /* pill background */
+  --pill-dot: #22c55e;                      /* “live dot” color */
+  --pill-dot-glow: rgba(34, 197, 94, 0.35); /* glow γύρω από το dot */
+
+  /* HERO gradient text */
+  --hero-gradient-from: #38bdf8;            /* gradient start */
+  --hero-gradient-to: #a855f7;              /* gradient end */
+
+  /* Inputs (register form) */
+  --input-bg: #5682d3e0;                    /* input background */
+  --input-border: rgba(56, 189, 248, 0.5);  /* input border */
+
+  /* HEADER / NAV (desktop) */
+  --header-bg: #020617;                     /* background του header */
+  --nav-link-color: var(--text-main);       /* default link color */
+  --nav-link-hover: #d7f7ff;                /* hover link color */
+  --nav-link-active: #d7f7ff;               /* active link color */
+  --nav-underline-color: #00c8ff;           /* underline color */
+  --nav-underline-glow: 0 0 6px #00c8ff;    /* glow για underline */
+
+  /* MOBILE MENU */
+  --mobile-menu-bg: rgba(15, 23, 42, 0.98);         /* mobile menu background */
+  --mobile-menu-border: rgba(148, 163, 184, 0.18);  /* mobile menu border */
+  --mobile-menu-text: #e3f5ff;                      /* mobile links default */
+  --mobile-menu-text-hover: #ffffff;                /* mobile links hover */
+
+  --mobile-menu-underline: #00c8ff;                 /* underline color */
+  --mobile-menu-underline-glow: 0 0 8px #00c8ff;    /* underline glow */
+
+  --mobile-menu-item-padding-y: 0.6rem;             /* vertical padding items */
+  --mobile-menu-item-gap: 0.75rem;                  /* gap μεταξύ items */
+  --mobile-menu-padding-x: 1.5rem;                  /* padding x panel */
+  --mobile-menu-padding-y: 1rem;                    /* padding y panel */
+
+  /* CARD SYSTEM */
+
+  /* basic card layout */
+  --card-bg-default: rgba(15, 23, 42, 0.98);         /* default card background */
+  --card-border-default: rgba(37, 99, 235, 0.7);     /* default card border */
+  --card-radius: 22px;                                /* default card radius */
+  --card-padding: 1.2rem;                             /* padding cards */
+  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);      /* shadow default */
+  --card-shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.8);/* shadow hover */
+  --card-glow-1: radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 55%); /* glow layer */
+  --card-transition-speed: 0.25s;                     /* speed transitions */
+
+  /* 3D tilt effect */
+  --tilt-perspective: 700px;               /* perspective depth */
+  --tilt-rotate-max: 8deg;                 /* max rotate in tilt */
+  --tilt-enabled: 1;                       /* 1 = on, 0 = off */
+  --card-tilt-lift: -2px;                  /* translateY όταν tilting */
+
+  /* reveal on scroll */
+  --reveal-translateY: 40px;               /* αρχικό offset */
+  --reveal-duration: 0.6s;                 /* διάρκεια animation */
+  --reveal-opacity-start: 0;               /* αρχική opacity */
+
+  /* FILTERS / TAGS / CATEGORY PILLS */
+
+  /* ===== Filters / Courses sidebar ===== */
+  --filters-panel-bg: var(--card-bg);             /* background panel */
+  --filters-panel-border: var(--border-subtle);   /* border panel */
+  --filters-panel-radius: var(--radius-xl);       /* radius panel */
+  --filters-panel-padding-x: 1.25rem;             /* padding x */
+  --filters-panel-padding-y: 1rem;                /* padding y */
+
+  --filters-panel-gap: 0.9rem;                    /* gap μέσα στη φόρμα */
+  --filters-row-gap: 0.75rem;                     /* gap ανάμεσα σε rows */
+
+  --filters-label-font-size: 0.8rem;              /* μέγεθος label */
+  --filters-label-color: var(--text-muted);       /* χρώμα label */
+
+  --filters-field-radius: 999px;                  /* pill inputs */
+  --filters-field-border: var(--border-subtle);   /* border input */
+  --filters-field-bg: #020617;                    /* background input */
+  --filters-field-padding-y: 0.45rem;             /* padding y input */
+  --filters-field-padding-x: 0.8rem;              /* padding x input */
+  --filters-field-font-size: 0.9rem;              /* font size input */
+  --filters-field-text-color: var(--text-main);   /* χρώμα κειμένου */
+
+  --filters-focus-border: rgba(56, 189, 248, 0.7); /* border on focus */
+  --filters-focus-shadow: 0 0 0 1px rgba(56, 189, 248, 0.45); /* shadow on focus */
+
+  /* ===== Badges (course tags) ===== */
+  --badge-font-size: 0.7rem;                      /* μικρό text */
+  --badge-radius: 999px;                          /* pill */
+  --badge-padding-y: 0.1rem;                      /* padding y */
+  --badge-padding-x: 0.6rem;                      /* padding x */
+
+  --badge-bg: rgba(15, 23, 42, 0.95);             /* bg badge */
+  --badge-border: rgba(148, 163, 184, 0.45);      /* border badge */
+  --badge-text: var(--text-muted);                /* text badge */
+
+  /* primary badge (π.χ. Programming) */
+  --badge-primary-bg: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.18),
+    transparent 60%
+  );
+  --badge-primary-border: rgba(56, 189, 248, 0.8);/* border primary */
+  --badge-primary-text: var(--accent);            /* text primary */
+
+  /* ABOUT / TEAM CARD SHAPE */
+  --about-card-rotate: -3deg;                     /* περιστροφή εξωτερικής κάρτας */
+  --about-card-inner-rotate: 3deg;                /* αντίστροφη περιστροφή εικόνας */
+  --about-card-clip: polygon(
+    12% 0%,   88% 0%,
+    100% 25%, 100% 75%,
+    88% 100%, 12% 100%,
+    0% 75%,   0% 25%
+  );                                              /* εξάγωνο clip-path */
+  --about-card-bg: var(--card-bg);                /* background κάρτας */
+  --about-card-radius: var(--radius-xl);          /* radius κάρτας */
+  --about-card-padding: 1rem;                     /* padding κάρτας */
+
+  --team-photo-spin-animation: team-photo-spin 24s linear infinite; /* animation για φωτο */
+  --team-photo-spin-enabled: 1;                   /* toggle (αν το χρησιμοποιείς σε CSS/JS) */
+
+  /* About highlight card */
+  --about-highlight-bg: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.18),
+    transparent 55%
+  );                                              /* highlight background */
+  --about-highlight-border: rgba(148, 163, 184, 0.35); /* highlight border */
+  --about-highlight-radius: var(--radius-xl);      /* highlight radius */
+  --about-highlight-padding-x: 1.5rem;             /* padding x */
+  --about-highlight-padding-y: 1.25rem;            /* padding y */
+}
+
+
+/* Base element styles */
+
+/* Body typography + background theme */
+body {
+  font-family: var(--font-base);  /* default font */
+  background: radial-gradient(circle at top, #0b1220 0, #020617 40%, #020617 100%); /* main bg */
+  color: var(--text-main);        /* default text color */
+  line-height: 1.5;               /* readability */
+  font-size: var(--fs-base);      /* base font size */
+}
+
+/* Links: inherit color + χωρίς underline */
+a {
+  color: inherit;
+  text-decoration: none;
+}

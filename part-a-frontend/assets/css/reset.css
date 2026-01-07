@@ -1,0 +1,19 @@
+/* Global reset: μηδενίζει default margin & padding του browser, κάνει το box-sizing border-box ώστε width/height να περιλαμβάνουν padding & border */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Images: δεν ξεπερνούν ποτέ το container τους, display:block για να μην υπάρχει extra whitespace (baseline gap από inline elements) */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form elements: κληρονομούν τη γραμματοσειρά από το parent, αποφεύγεται το default browser font στα inputs/buttons */
+button,
+input,
+textarea {
+  font: inherit;
+}

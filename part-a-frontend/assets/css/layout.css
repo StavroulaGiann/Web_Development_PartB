@@ -1,0 +1,534 @@
+/* Βασικό wrapper σελίδας: επιτρέπει “sticky footer” με flex column */
+.page {
+  min-height: 100vh;          /* πάντα τουλάχιστον όσο το viewport */
+  display: flex;
+  flex-direction: column;     /* header -> main -> footer */
+}
+
+/* Κεντρικό container: περιορίζει πλάτος + κεντράρει */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: var(--page-padding-x);
+}
+
+/* Mobile padding για container */
+@media (max-width: 880px) {
+  .container {
+    padding-inline: var(--page-padding-x-mobile);
+  }
+}
+
+
+/* Header layout / sticky */
+
+/* Sticky header: μένει στην κορυφή, με blur και border */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);                /* glass effect */
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+
+/* NAV BAR */
+
+/* Nav container: logo αριστερά, links/cta δεξιά */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nav-gap);
+  min-height: var(--nav-height);
+}
+
+
+/* MOBILE FIRST (default) */
+
+/* Desktop links κρυφά στο mobile */
+.nav-links {
+  display: none;
+  align-items : center;
+  gap: 1.75rem;
+}
+
+/* CTA περιοχή κρυφή στο mobile */
+.nav-cta {
+  display:none;
+}
+
+/* Στο κινητό: δείχνουμε μόνο το hamburger */
+  .mobile-toggle {
+    display: inline-block; /* δείχνουμε το hamburger */
+    margin-left: auto;     /* σπρώχνει το κουμπί δεξιά */
+  }
+
+
+
+/* MAIN LAYOUT */
+
+/* Main: flex: ώστε να γεμίζει το ύψος και να κατεβαίνει το footer */
+main {
+  flex: 1;
+  padding: 1.25rem 0 2.5rem;
+}
+
+/* Hero spacing */
+.hero {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Hero layout: mobile default = κάθετο */
+.hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Κοινό grid για tracks/cards/resources: mobile = 1 στήλη */
+.tracks-grid,
+.cards-grid,
+.resource-list {
+  display: grid;
+  grid-template-columns: 1fr; /* κινητό: 1 στήλη */
+  gap: 0.9rem;
+}
+
+
+/* TABLET: 2 στήλες, full menu */
+
+@media (min-width: 600px) and (max-width: 879.98px) {
+
+  /* HERO: στο tablet μένει κάθετο (1 στήλη) */
+  .hero-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Η αριστερή/δεξιά περιοχή του hero παίρνει ίσο “χώρο” */
+  .hero-left,
+  .hero-right {
+    flex: 1;
+  }
+
+  /* TRACKS / CARDS / RESOURCES: tablet = 2 στήλες */
+  .tracks-grid,
+  .cards-grid,
+  .resource-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Εμφανίζουμε το κανονικό μενού στο tablet */
+  .nav-links {
+    display: flex;
+  }
+
+  /* Εμφανίζουμε CTA περιοχή στο tablet */
+  .nav-cta {
+    display: flex;
+  }
+
+  /* Κρύβουμε hamburger + mobile menu στο tablet */
+  .mobile-toggle,
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+
+/* DESKTOP: 3 στήλες */
+
+@media (min-width: 880px) {
+
+  /* Hero: desktop = οριζόντιο (2 περιοχές side-by-side) */
+  .hero-grid {
+    flex-direction: row;
+  }
+
+  /* Hero columns μοιράζονται ισόποσα τον χώρο */
+  .hero-left,
+  .hero-right {
+    flex: 1;
+  }
+
+  /* TRACKS / CARDS / RESOURCES: desktop = 3 στήλες */
+  .tracks-grid,
+  .cards-grid,
+  .resource-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Κανονικό menu + cta εμφανή στο desktop */
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-cta {
+    display: flex;
+  }
+
+  /* Κρύβουμε hamburger + mobile menu στο desktop */
+  .mobile-toggle,
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+
+/* Courses page layout */
+
+/* Spacing για header section της courses page */
+.courses-page-header {
+  margin-top: 2rem;
+}
+
+/* Layout container: filters + list (stacked στο mobile) */
+.courses-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+/* Filters panel styling */
+.courses-filters {
+  background: var(--filters-panel-bg);
+  border-radius: var(--filters-panel-radius);
+  padding: var(--filters-panel-padding-y) var(--filters-panel-padding-x);
+  border: 1px solid var(--filters-panel-border);
+}
+
+/* Courses list container */
+.courses-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Header της λίστας (title + sort), stacked στο mobile */
+.courses-list-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+/* Sort controls */
+.courses-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* Sort label */
+.courses-sort label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+
+/* Filters form */
+
+/* Φόρμα φίλτρων: vertical  */
+.filters-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--filters-panel-gap);
+  margin-top: 0.75rem;
+}
+
+/* Field group: label + input/select */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Label styling */
+.field-group label {
+  font-size: var(--filters-label-font-size);
+  color: var(--filters-label-color);
+}
+
+/* Inputs  styling */
+.field-group select,
+.field-group input[type="search"] {
+  border-radius: var(--filters-field-radius);
+  border: 1px solid var(--filters-field-border);
+  background: var(--filters-field-bg);
+  padding: var(--filters-field-padding-y) var(--filters-field-padding-x);
+  font-size: var(--filters-field-font-size);
+  color: var(--filters-field-text-color);
+}
+
+/* Focus state */
+.field-group select:focus,
+.field-group input[type="search"]:focus {
+  outline: none;
+  border-color: var(--filters-focus-border);
+  box-shadow: var(--filters-focus-shadow);
+}
+
+
+/* Courses page: tablet layout */
+
+@media (min-width: 600px) and (max-width: 879.98px) {
+
+  /* Tablet: filters + list σε 2 στήλες */
+  .courses-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* Filters sidebar: fixed width + sticky */
+  .courses-filters {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  /* Header: title + sort στην ίδια γραμμή */
+  .courses-list-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Layout row για φίλτρα */
+  .filters-row {
+    flex-direction: row;
+  }
+
+  .filters-row .field-group {
+    flex: 1;
+  }
+}
+
+
+/* Courses page: desktop layout */
+
+@media (min-width: 880px) {
+
+  /* Desktop: πιο άνετο gap ανάμεσα σε sidebar και list */
+  .courses-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  /* Sticky filters sidebar */
+  .courses-filters {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  /* Αποφυγή overflow όταν το περιεχόμενο είναι μεγάλο */
+  .courses-list {
+    min-width: 0;
+  }
+
+  /* Header: οριζόντιο */
+  .courses-list-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Filters: row layout */
+  .filters-row {
+    flex-direction: row;
+  }
+
+  .filters-row .field-group {
+    flex: 1;
+  }
+}
+
+
+/* Course details layout  */
+
+/* Grid container για course details */
+.course-details-grid {
+  margin: 1.5rem 0 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Desktop: 2 στήλες (κείμενο + video) */
+@media (min-width: 880px) {
+  .course-details-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+    align-items: flex-start;
+  }
+}
+
+
+/* About page layout */
+
+/* Intro του About */
+.about-hero {
+  margin-top: 2rem;
+  max-width: 800px;
+}
+
+/* About layout: mobile default = κάθετο */
+.about-layout {
+  margin: 1.75rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Main about block */
+.about-block {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Highlight block */
+.about-highlight {
+  background: var(--about-highlight-bg);
+  border-radius: var(--about-highlight-radius);
+  padding: var(--about-highlight-padding-y) var(--about-highlight-padding-x);
+  border: 1px solid var(--about-highlight-border);
+}
+
+/* Λίστα bullets */
+.about-list {
+  margin: 0.75rem 0 0.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Spacing μεταξύ items */
+.about-list li + li {
+  margin-top: 0.25rem;
+}
+
+/* Tags block */
+.about-tags {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+
+/* Team & Contact layout */
+
+/* Team section spacing */
+.team-section {
+  margin: 2.5rem 0 2.5rem;
+}
+
+/* Team grid */
+.team-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+/* Contact section spacing */
+.contact-section {
+  margin: 2.5rem 0 3rem;
+}
+
+/* Contact grid */
+.contact-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+
+/* Tablet layout για About/Team/Contact */
+
+@media (min-width: 600px) and (max-width: 879.98px) {
+
+  /* About: οριζόντιο layout */
+  .about-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* Main block μεγαλύτερο */
+  .about-block {
+    flex: 2;
+  }
+
+  /* Highlight block μικρότερο */
+  .about-highlight {
+    flex: 1.4;
+  }
+
+  /* Team: 1 στήλη */
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact: 2 στήλες */
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Desktop layout για About/Team/Contact */
+
+@media (min-width: 880px) {
+
+  /* About: οριζόντιο layout με περισσότερο κενό */
+  .about-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    
+  }
+
+  .about-block {
+    flex: 2;
+  }
+
+  .about-highlight {
+    flex: 1.4;
+  }
+
+  /* Team: 2 στήλες */
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Contact: 2 στήλες */
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Απόσταση κάτω από κάθε section μέσα στο main container */
+main > .container > section {
+  margin-bottom: var(--section-gap);
+}
+
+/* Section header: title αριστερά + link/cta δεξιά */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--section-header-gap);
+}
+
+/* Κοινό grid setup για tracks/courses/books (ορίζει μόνο display+gap) */
+.tracks-grid,
+.courses-grid,
+.books-grid {
+  display: grid;
+  gap: var(--grid-gap);
+}

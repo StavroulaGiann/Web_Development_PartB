@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <!-- Ορισμός κωδικοποίησης χαρακτήρων σε UTF-8 ώστε να υποστηρίζονται σωστά ελληνικοί χαρακτήρες -->
+  <meta charset="UTF-8" />
+
+  <!-- Τίτλος της σελίδας που εμφανίζεται στην καρτέλα του προγράμματος περιήγησης -->
+  <title>devAcademy | Course details</title>
+
+  <!-- Σύνδεση με reset.css, theme.css, layout.css και components.css για τη μορφοποίηση της σελίδας -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<!-- Το data-page attribute χρησιμοποιείται για styling ή για την Javascript λογική -->
+<body data-page="courses-details">
+  <div class="page">
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <!-- Κεντρικό navigation bar -->
+        <nav class="nav">
+          <!-- Logo της εφαρμογής που λειτουργεί και ως σύνδεσμος προς την αρχική σελίδα -->
+          <a href="index.html" class="logo">
+            <div class="logo-badge">&lt;/&gt;</div>
+            <div class="logo-text">devAcademy</div>
+          </a>
+          <!-- Links που οδηγούν στις υπόλοιπες σελίδες. Η κλάση "active" επιτρέπει την υπογράμμιση στο μενού της σελίδας στην οποία βρισκόμαστε -->
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="books.html">Books</a>
+            <a href="about.html">About</a>
+          </div>
+          <!-- Call-to-action κουμπί για Register -->
+          <div class="nav-cta">
+            <a href="register.html" class="btn btn-primary">Register</a>
+          </div>
+
+          <!--Κουμπί toggle για την εμφάνιση και απόκρυψη (show / hide) του mobile navigation menu. Τα aria attributes βελτιώνουν την χρηστικότητα για τη πλοήγηση
+          από όλους τους χρήστες ανεξαρτήτως -->
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Άνοιγμα μενού"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <span></span>
+          </button>
+        </nav>
+
+        <!-- Mobile navigation menu που εμφανίζεται όταν η οθόνη είναι μικρή -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+          <a href="index.html">Home</a>
+          <a href="courses.html">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="about.html">About</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Κεντρικό container της σελίδας. Το id χρησιμοποιείται από JavaScript για δυναμική εισαγωγή περιεχομένου -->
+      <div class="container" id="courseDetailsContainer">
+        <!-- Το περιεχόμενο του συγκεκριμένου course θα μπει εδώ με JS -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-meta">
+            © 2025 devAcademy · E-Learning Πληροφορικής
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Σύνδεση με Javascript αρχεία για UI συμπεριφορά και responsiveness -->
+  <script src="assets/js/data/courses.js" defer></script>
+  <script src="assets/js/data/videos.js" defer></script>
+  <script src="assets/js/ui/menu.js" defer></script>
+  <script src="assets/js/ui/responsive.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

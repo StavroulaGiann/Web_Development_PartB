@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <title>devAcademy </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    
+
+</head>
+<body data-page="home">
+
+
+  <div class="page">
+    <!-- HEADER -->
+  <header>
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-badge">&lt;/&gt;</div>
+        <div class="logo-text">devAcademy</div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html"class="active">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="/" class="btn btn-ghost">Sign in</a>
+        <a href="register.html" class="btn btn-primary">Register</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button
+        class="mobile-toggle"
+        id="mobileToggle"
+        aria-label="Άνοιγμα μενού"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="books.html">Books</a>
+      <a href="about.html">About</a>
+      <a href="/" class="btn btn-ghost">Sign in</a>
+      <a href="register.html" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+</header>
+
+
+    <!-- MAIN -->
+    <main>
+      <div class="container">
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-grid">
+            <div class="hero-left">
+              <div class="pill">
+                
+                
+                    <span class="pill-dot"></span>
+                    Live • New cohort starting soon
+              
+              </div>
+
+              <h1 class="hero-title">
+                Start your <span>coding journey</span> today.
+              </h1>
+
+              <p class="hero-subtitle">
+              Welcome to devAcademy — a modern e-learning platform designed to help you 
+              build real coding skills from the ground up.
+              Learn at your own pace, 
+              explore topics that inspire you, and gain the knowledge you need 
+              to thrive in today’s digital world.
+              </p>
+
+              <div class="hero-cta">
+                <a href="courses.html" class="btn btn-primary">Browse Courses</a>
+                <a href="register.html" class="btn btn-ghost">Create free account</a>
+              </div>
+
+              <div class="hero-meta">
+                <div class = "pill"><span><strong>10+</strong> courses</span> </div>
+                <div class = "pill"><span><strong>e - learning</strong> videos</span></div>
+                <div class = "pill"><span><strong>5000+</strong> students </span></div>
+                
+              </div>
+            </div>
+
+            <div class="hero-right" aria-label="Code preview">
+              <div class="hero-right-header"></div>
+              <div class="hero-badge">
+                <span class="hero-badge-pill"></span>
+                <span class="hero-filename">Beginner-friendly • Hands-on labs</span>
+              </div>
+            <div class="hero-code-image">
+          <img
+            src="assets/img/index_img/prompt.png"
+            srcset="
+            assets/img/index_img/prompt.png 600w,
+            assets/img/index_img/prompt.png 1200w
+            "
+            sizes="(max-width: 600px) 95vw, (max-width: 880px) 80vw, 50vw"
+            class="hero-code-img"
+          />
+
+
+
+          </div>
+        </div>
+
+
+
+            </div>
+          </div>
+        </section>
+
+        <!-- TRACKS -->
+        <section>
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Learning tracks</h2>
+              <p class="section-subtitle">
+                Choose a track according to your level and goals..
+              </p>
+            </div>
+          </div>
+            </article>
+
+          <div class="tracks-grid">
+            <article class="track-card">
+              <div class="track-pill">Start learning Python, Java & C++ from scratch</div>
+              <h3 class="track-title">Master the top programming languages: Python, Java & C++</h3>
+              <p class="track-desc">
+                Learn essential programming concepts such as types, functions, and file handling, through languages suited to every skill level.
+              </p>
+              <div class="track-meta">
+                <span>Python • Java • C++</span>
+              </div>
+              <a href="courses.html?category=programming" class="section-link">View courses in this track →</a>
+            </article>
+
+            <article class="track-card">
+              <div class="track-pill"> Basic Web Theory • Frontend development</div>
+              <h3 class="track-title">Develop today your own webite!</h3>
+              <p class="track-desc">
+                Build your knowledge on websites' structure and develop your skills to create responsive web pages using HTML, CSS, and JavaScript.
+              </p>
+              <div class="track-meta">
+                <span>HTML • CSS • JS</span>
+                <span>Responsive design</span>
+              </div>
+              <a href="courses.html?category=web" class="section-link">View courses in this track→</a>
+            </article>
+
+            <article class="track-card">
+              <div class="track-pill">Networks</div>
+              <h3 class="track-title">Fundamentals of Networks</h3>
+              <p class="track-desc">
+              Dive into the world of networking by quickly learning the fundamental network layers. Build your own connections easily and confidently.
+              </p>
+              <div class="track-meta">
+                <span>Network Layers • TCP / IP • Client - Server model</span>
+              </div>
+              <a href="courses.html?category=networks " class="section-link">See all tracks →</a>
+            </article>
+            <article class="track-card">
+              <div class="track-pill">Security</div>
+              <h3 class="track-title">Protect and secure your systems</h3>
+              <p class="track-desc">
+                Become an expert on how to detect and counter threats — and keep your personal data safe like a pro.
+              </p>
+              <div class="track-meta">
+                <span>C I A • Threats • Vulnerabilities</span>
+              </div>
+              <a href="courses.html?category=security" class="section-link">View courses in this track →</a>
+            </article>
+          </div>
+        </section>
+
+        <!-- FEATURED COURSES -->
+        <section>
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Featured courses</h2>
+              <p class="section-subtitle">
+                A few courses to start with
+              </p>
+            </div>
+          </div>
+
+          <div class="cards-grid">
+          <a href="courses-details.html?id=py-foundations" class="track-card">
+          <h3 class="track-title">
+          Introduction to Programming with Python
+          </h3>
+          <p class="track-desc">
+            Learn basic programming concepts with Python and build today your first project
+          </p>
+        <div class="course-meta">
+        <span>Beginner</span>
+        <span>6 weeks • 25 lessons</span>
+        </div>
+        </a>
+
+        
+        
+          <a href="courses-details.html?id=comp-sci-intro" class="track-card">
+          <h3 class="track-title">
+          Introduction to Computer Science
+          </h3>
+          <p class="track-desc">
+            The basics of network operation
+          </p>
+        <div class="course-meta">
+        <span>Beginner</span>
+        <span>6 weeks • 25 lessons</span>
+        </div>
+        </a>
+
+        
+      
+    <a href="courses-details.html?id=html-css-web" class="track-card">
+    <h3 class="course-title">Web Development with HTML, CSS & JS</h3>
+    <p class="course-subtitle">Intermediate</p>
+    <p class="track-desc">
+            Build responsive websites with modern layout techniques
+          </p>
+        <div class="course-meta">
+        <span>Beginner</span>
+        <span>6 weeks • 25 lessons</span>
+        </div>
+        </a>
+
+        
+    <a href="courses-details.html?id=cybersecurity" class="track-card">
+    <h3 class="course-title">CyberSecurity</h3>
+    <p class="course-subtitle">Intermediate</p>
+    <p class="track-desc">
+           C I A • Threats • Vulnerabilities
+          </p>
+        <div class="course-meta">
+        <span>Beginner</span>
+        <span>6 weeks • 25 lessons</span>
+        </div>
+        </a>
+
+</div>
+
+
+
+        
+        </section>
+
+        <!-- RESOURCES / BOOKS -->
+        <section>
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Library &amp; resources</h2>
+              <p class="section-subtitle">
+                Ebooks, notes and cheatsheets to boost your learning.
+              </p>
+            </div>
+            <a href="books.html" class="section-link">Browse all books →</a>
+          </div>
+
+          <div class="resource-list">
+          <a href="books-details.html?id=py-book" class="track-card">
+          <div class="resource-main">
+            <span class="resource-title">Εισαγωγή στον Υπολογισμό και τον Προγραμματισμό με την Python, 3η έκδοση</span>
+            <span class="resource-meta">616 σελίδες • Ελληνικά</span>
+          </div>
+          </a>
+
+            <a href="books-details.html?id=html-css-handbook" class="track-card">
+            <div class="resource-main">
+            <span class="resource-title">HTML and CSS</span>
+            <span class="resource-meta">512 pages • English</span>
+          </div>
+          </a>
+
+          <a href="books-details.html?id=networking-fundamentals-book" class="track-card">
+          <div class="resource-main">
+          <span class="resource-title">Η ΕΠΙΣΤΗΜΗ ΤΩΝ ΥΠΟΛΟΓΙΣΤΩΝ</span>
+          <span class="resource-meta">840 σελίδες • Ελληνικά</span>
+          </div>
+          </a>
+
+        <a href="books-details.html?id=cyber-book" class="track-card">
+        <div class="resource-main">
+        <span class="resource-title">Αυτονομία και Πολιτική Ανυπακοή στον Κυβερνοχώρο</span>
+        <span class="resource-meta">442 σελίδες • Ελληνικά</span>
+        </div>
+        </a>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section>
+          <div class="cta">
+            <div>
+              <h2 class="cta-title">Ready to start ?</h2>
+              <p class="cta-text">
+                Create today your free account, choose a course
+                and start your building your own portfolio.
+              </p>
+            </div>
+            <a href="register.html" class="btn btn-primary">Create your account</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-meta">
+            © 2025 devAcademy · E-Learning Πληροφορικής
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<!-- // AICANARY: CSD-ELearn-2025 -->
+<script src="assets/js/ui/menu.js" defer></script>
+<script src="assets/js/forms/register-form.js" defer></script>
+<script src="assets/js/ui/responsive.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+
+
+</body>
+</html>

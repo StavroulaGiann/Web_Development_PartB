@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <!-- Ορισμός κωδικοποίησης χαρακτήρων σε UTF-8 ώστε να υποστηρίζονται σωστά ελληνικοί χαρακτήρες -->
+  <meta charset="UTF-8" />
+
+  <!-- Τίτλος της σελίδας που εμφανίζεται στην καρτέλα του προγράμματος περιήγησης -->
+  <title>devAcademy | About us</title>
+
+  <!-- Σύνδεση με reset.css, theme.css, layout.css και components.css για τη μορφοποίηση της σελίδας -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<!-- Το data-page attribute χρησιμοποιείται για styling ή για την Javascript λογική -->
+<body data-page="about">
+  <div class="page">
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <!-- Κεντρικό navigation bar -->
+        <nav class="nav">
+          <!-- Logo της εφαρμογής που λειτουργεί και ως σύνδεσμος προς την αρχική σελίδα -->
+          <a href="index.html" class="logo">
+            <div class="logo-badge">&lt;/&gt;</div>
+            <div class="logo-text">devAcademy</div>
+          </a>
+          <!-- Links που οδηγούν στις υπόλοιπες σελίδες. Η κλάση "active" επιτρέπει την υπογράμμιση στο μενού της σελίδας στην οποία βρισκόμαστε -->
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="books.html">Books</a>
+            <a href="about.html" class="active">About</a>
+          </div>
+
+          <!-- Call-to-action κουμπί για Register -->
+          <div class="nav-cta">
+            <a href="register.html" class="btn btn-primary">Register</a>
+          </div>
+
+          <!--Κουμπί toggle για την εμφάνιση και απόκρυψη (show / hide) του mobile navigation menu. Τα aria attributes βελτιώνουν την χρηστικότητα για τη πλοήγηση
+          από όλους τους χρήστες ανεξαρτήτως -->
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Άνοιγμα μενού"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+          <span></span>
+          </button>
+        </nav>
+        <!-- Mobile navigation menu που εμφανίζεται όταν η οθόνη είναι μικρή -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+          <a href="index.html">Home</a>
+          <a href="courses.html">Courses</a>
+          <a href="books.html">Books</a>
+          <a href="about.html">About</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="container">
+        <!-- Hero section της About σελίδας. Παρουσιάζει συνοπτικά την λειτουργία της πλατφόρμας -->
+        <section class="about-hero">
+          <!-- Στοιχέιο pill για την μορφοποίηση την σελίδας -->
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>About devAcademy</span>
+          </div>
+          <!-- Τίτλος ενότητας -->
+          <h1 class="section-title">Who we are &amp; what we want to achieve</h1>
+          <!-- Περιγραφή πλατφόρμας -->
+          <p class="section-subtitle">
+          DevAcademy is a student e-learning platform for Computer Science,
+          designed to resemble a real online education service:
+          courses, books, videos and tools that help the user learn
+          at their own pace.
+          </p>
+        </section>
+        <!-- Παρουσίαση του τί προσφέρει η πλατφόρμα -->
+          <aside class="about-highlight">
+            <h3 class="section-title">We offer :</h3>
+            <ul class="about-tags">
+              <li> Computer Science courses at many levels</li>
+              <li> Library with carefully selected technical and theoritical books</li>
+              <li>   Dynamic content search &amp; filtering</li>
+  
+            </ul>
+          </aside>
+        </section>
+
+        <!-- Team section -->
+        <section class="team-section">
+          <h2 class="section-title">The development team</h2>
+          <p class="section-subtitle">
+          DevAcademy was implemented by a small group of students with a common element of passion for development and a common goal of clean UI and professional results.
+          </p>
+          <!-- Grid διάταξη καρτών μελών -->
+          <div class="team-grid">
+
+            <!--1η κάρτα μέλους ομάδας -->
+            <article class="team-card">
+              <!-- Φωτογραφία μέλους -->
+              <div class="team-photo">
+                <!--Χρήση των srcset για προσαρμογή των εικόνων ανάλογα με το μέγεθος της εικόνας.-->
+                <img
+                  src="assets/img/team/member.png"
+                  srcset="
+                  assets/img/team/member.png 400w,
+                  assets/img/team/member.png 800w
+                  "
+                  sizes="(max-width: 600px) 90vw, 400px"
+                />
+              </div>
+              <!-- Στοιχεία μέλους -->
+              <div class="team-body">
+                <h3 class="team-name">Αριστείδης Καραγιαννάκος</h3>
+                <dl class="team-meta">
+                  <div>
+                    <dt>Αριθμός Μητρώου</dt>
+                    <dd>ΑΜ: p3220066</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <!-- 2η κάρτα μέλους ομάδας -->
+            <article class="team-card">
+              <!-- Φωτογραφία μέλους -->
+              <div class="team-photo">
+                <!--Χρήση των srcset για προσαρμογή των εικόνων ανάλογα με το μέγεθος της εικόνας.-->
+                <img
+                  src="assets/img/team/stavroulaa.jpg"
+                  srcset="
+                  assets/img/team/stavroulaa.jpg 400w,
+                  assets/img/team/stavroulaa.jpg 800w
+                  "
+                  sizes="(max-width: 600px) 90vw, 400px"/>
+              </div>
+              <!-- Στοιχεία μέλους -->
+              <div class="team-body">
+                <h3 class="team-name">Σταυρούλα Γιαννακοπούλου</h3>
+                <dl class="team-meta">
+                  <div>
+                    <dt>Αριθμός Μητρώου</dt>
+                    <dd>ΑΜ: p3220027</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Contact section -->
+          <div class="contact-grid">
+            <!-- Πληροφορίες μαθήματος -->
+            <div class="contact-card">
+              <h3 class="section-title">General Information</h3>
+              <ul class="about-list">
+                <li>Department: Informatics</li>
+                <li>Course: Web Development</li>
+                <li>Winter Semester / 2024-2025</li>
+              </ul>
+            </div>
+            <!-- Στοιχεία επικοινωνίας -->
+            <div class="contact-card">
+              <h3 class="section-title">Contact us</h3>
+              <p class="section-subtitle">
+              For any questions or feedback, feel free to reach out via email
+                    <div>
+                    <dt>Email us at</dt>
+                    <dd><a href="mailto:p3220027@aueb.gr.com">p3220027@aueb.gr</a></dd>
+                  </div>
+                  <div>
+                    <dd><a href="mailto:ariskaragiannakos@gmail.com">ariskaragiannakos@gmail.com</a></dd>
+                  </div>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-meta">
+            © 2025 devAcademy · E-Learning Πληροφορικής
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Σύνδεση με Javascript αρχεία για UI συμπεριφορά και responsiveness -->
+  <script src="assets/js/ui/menu.js" defer></script>
+  <script src="assets/js/ui/responsive.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <!-- Ορισμός κωδικοποίησης χαρακτήρων σε UTF-8 ώστε να υποστηρίζονται σωστά ελληνικοί χαρακτήρες -->
+  <meta charset="UTF-8" />
+
+  <!-- Τίτλος της σελίδας που εμφανίζεται στην καρτέλα του προγράμματος περιήγησης -->
+  <title>devAcademy | E-Learning Πληροφορικής</title>
+
+  <!-- Σύνδεση με reset.css, theme.css, layout.css και components.css για τη μορφοποίηση της σελίδας -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<body>
+  <!-- Το data-page attribute χρησιμοποιείται για styling ή για την Javascript λογική -->
+  <div class="page">
+  <!-- Header Section -->
+  <header>
+  <div class="container">
+    <!-- Κεντρικό navigation bar -->
+    <nav class="nav">
+      <!-- Logo της εφαρμογής που λειτουργεί και ως σύνδεσμος προς την αρχική σελίδα -->
+      <a href="index.html" class="logo">
+        <div class="logo-badge">&lt;/&gt;</div>
+        <div class="logo-text">devAcademy</div>
+      </a>
+      <!-- Links που οδηγούν στις υπόλοιπες σελίδες. Η κλάση "active" επιτρέπει την υπογράμμιση στο μενού της σελίδας στην οποία βρισκόμαστε -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+      </div>
+      <!-- Call-to-action κουμπί για Register -->
+      <div class="nav-cta">
+        <a href="register.html" class="btn btn-primary">Register</a>
+      </div>
+
+      <!--Κουμπί toggle για την εμφάνιση και απόκρυψη (show / hide) του mobile navigation menu. Τα aria attributes βελτιώνουν την χρηστικότητα για τη πλοήγηση
+          από όλους τους χρήστες ανεξαρτήτως -->
+      <button
+        class="mobile-toggle"
+        id="mobileToggle"
+        aria-label="Άνοιγμα μενού"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile navigation menu που εμφανίζεται όταν η οθόνη είναι μικρή -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="books.html">Books</a>
+      <a href="about.html">About</a>
+      <a href="register.html" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+</header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="container">
+        <!-- Register section: Περιλαμβάνει info card + φόρμα εγγραφής, ώστε ο χρήστης να ενημερώνεται πριν συμπληρώσει στοιχεία.-->
+        <section class="register-section">
+          <div class="register-grid">
+          <!-- Αριστερή στήλη: informational content.-->
+            <div class="register-info-card">
+              <h1>Register at devAcademy</h1>
+              <p class="register-subtitle">
+              Create a free account, choose courses and start building portfolio projects.
+              </p>
+              <!-- Λίστα βασικών πλεονεκτημάτων της πλατφόρμας -->
+              <ul class="register-benefits">
+                <li>Access to 10+ Python, Web, Networks, Security courses.</li>
+                <li>Adapted to the curriculum of Computer Science schools.</li>
+              </ul>
+
+              <div class="register-highlight"> Ιdeal for students, graduates and beginners who want to pursue a career in Information Technology.
+              </div>
+            </div>
+
+            <!--Δεξιά στήλη: φόρμα εγγραφής.-->
+            <div class="register-form-card">
+              <h2>Create Account</h2>
+              <p class="register-form-desc">
+                Please fill in the information below. Fields marked with * are required.  
+              </p>
+
+          <!-- Form: απενεργοποιεί τα default browser validation popups, ώστε τα μηνύματα σφάλματος να υλοποιούνται ελεγχόμενα με JS. -->
+          <form id="registerForm" novalidate class="register-form">
+          <!-- Βασικά στοιχεία χρήστη -->
+            <div class="form-section">
+              <h2 class="section-title">Personal Data</h2>
+              <!-- Grid πεδίων για σωστή στοίχιση σε desktop/mobile -->
+              <div class="form-grid">
+                <!-- Field group: First Name -->
+                <div class="field-group">
+                <label for="firstName">First Name*</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    />
+                <!-- Container για δυναμική προβολή σφαλμάτων που προκύπτουν από την διαδικασία validation μέσω JavaScript --> 
+                <p class="field-error" data-error-for="firstName"></p>
+              </div>
+              <!-- Field group: Last Name -->
+              <div class="field-group">
+              <label for="lastName">Last Name*</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                />
+              <p class="field-error" data-error-for="lastName"></p>
+            </div>
+
+              <!-- Field group: Email -->
+              <div class="field-group">
+              <label for="email">Email*</label>
+                <!-- type="email" παρέχει βασικό έλεγχο μορφής email -->
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                />
+            <p class="field-error" data-error-for="email"></p>
+          </div>
+
+            <!-- Field group: Birthdate -->
+            <div class="field-group">
+            <label for="birthDate">Birthdate*</label>
+              <input
+                type="date"
+                id="birthDate"
+                name="birthDate"
+                required
+              />
+            <p class="field-error" data-error-for="birthDate"></p>
+          </div>
+          </div>
+        </div>
+
+        <!-- Στοιχεία λογαριασμού -->
+          <div class="form-section">
+          <h2 class="section-title">Account Details</h2>
+          <div class="form-grid">
+            <!-- Password field: minlength=8 ορίζει ελάχιστο μήκος -->
+            <div class="field-group">
+            <label for="password">Password*</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                minlength="8"
+              />
+          <!-- Επεξηγηματικό μήνυμα για τον χρήστη -->
+          <small class="field-hint">
+            At least 8 characters, with letters (Greek or Latin) and numbers.
+          </small>
+          <p class="field-error" data-error-for="password"></p>
+          </div>
+
+        <!-- Το πεδίο συγκρίνεται με τον αρχικό κωδικό μέσω JavaScript -->
+          <div class="field-group">
+            <label for="confirmPassword">Password Confirmation*</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+            />
+            <p class="field-error" data-error-for="confirmPassword"></p>
+            </div>
+          </div>
+        </div>
+
+      <!-- Προφιλ Χρήστη -->
+        <div class="form-section">
+          <h2 class="section-title">User Profile</h2>
+          <div class="form-grid">
+            <!-- Ομάδα επιλογής ρόλου χρήστη (μια μόνο δυνατή επιλογή) -->
+            <div class="field-group">
+              <span class="field-label">User Background*</span>
+              <!-- Inline radio buttons για ευκολότερη επιλογή -->
+                <div class="field-inline">
+                <label>
+                  <input type="radio" name="role" value="student" required />
+                    Student
+                  </label>
+                <label>
+                  <input type="radio" name="role" value="graduate" />
+                    Graduate
+                </label>
+                <label>
+                  <input type="radio" name="role" value="professional" />
+                    Professional
+                </label>
+              </div>
+              <!-- Μήνυμα σφάλματος για μη επιλογή ρόλου -->
+              <p class="field-error" data-error-for="role"></p>
+            </div>
+
+        <!-- Select: ενδιαφέρον χρήστη για personalization -->
+        <div class="field-group">
+        <label for="interest">Area of ​​interest*</label>
+        <select id="interest" name="interest" required>
+          <option value="">Choose...</option>
+          <option value="Programming">Programming Languages</option>
+          <option value="web">Web Development</option>
+          <option value="networks">Networks</option>
+          <option value="security">Security</option>
+        </select>
+        <!-- Μήνυμα σφάλματος για μη επιλογή ρόλου -->
+        <p class="field-error" data-error-for="interest"></p>
+      </div>
+    </div>
+  </div>
+
+      <!-- Ενότητα για προτεινόμενα μαθήματα -->
+      <div class="form-section">
+      <h2 class="section-title">Suggested courses</h2>
+
+      <div class="form-grid">
+        <!-- Επίπεδο εμπειρίας προγραμματισμού -->
+        <div class="field-group">
+          <label for="experience">Programming experience*</label>
+          <select id="experience" name="experience" required>
+            <option value="">Choose...</option>
+            <option value="basic">None / Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <!-- Μήνυμα σφάλματος για μη επιλογή ρόλου -->
+          <p class="field-error" data-error-for="experience"></p>
+        </div>
+
+        <!-- Κύριος στόχος χρήστη -->
+        <div class="field-group">
+          <label for="goal">Your main goal*</label>
+          <select id="goal" name="goal" required>
+            <option value="">Choose...</option>
+            <option value="find-job">Find job</option>
+            <option value="learn-basics">Learn basic concepts</option>
+            <option value="university">Extra support for university courses</option>
+            <option value="career-change">Career Change</option>
+          </select>
+          <!-- Μήνυμα σφάλματος για μη επιλογή ρόλου -->
+          <p class="field-error" data-error-for="goal"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Όροι χρήσης -->
+      <div class="form-section">
+      <div class="field-group">
+        <!--Checkbox: απαιτεί αποδοχή όρων χρήσης, required: η εγγραφή δεν προχωρά χωρίς επιβεβαίωση.-->
+        <label class="checkbox-label">
+          <input type="checkbox" name="termsAccepted" value="yes" required /> I accept the terms of use.*
+        </label>
+        <!-- Μήνυμα σφάλματος σε περίπτωση μη αποδοχής -->
+        <p class="field-error" data-error-for="terms"></p>
+      </div>
+      </div>
+
+      <!-- Κατάσταση  -->
+      <div class="form-footer">
+        <p class="form-status"></p>
+        <!-- Υποβολή φόρμας: οδηγεί σε στάδιο σύνοψης πριν τελική επιβεβαίωση -->
+        <button type="submit" class="btn btn-primary"> Continue with confirmation </button>
+      </div>
+</form>
+
+      <!-- Ενότητα σύνοψης πριν την τελική επιβεβαίωση, hidden: το section δεν εμφανίζεται μέχρι να ενεργοποιηθεί από JS. -->
+      <section id="registerSummary" class="register-summary" hidden>
+      <h2 class="section-title">Continue with confirmation</h2>
+      <p class="section-subtitle">
+        Check your preferences before completing registration.
+      </p>
+
+      <!-- Container για δυναμική δημιουργία σύνοψης -->
+      <div class="register-summary-content"></div>
+      <!-- Eπιβεβαίωση ή επιστροφή για επεξεργασία -->
+      <div class="register-summary-actions">
+      <button type="button" class="btn btn-primary" id="summaryConfirmBtn">
+        Register Confirmation
+      </button>
+      <button type="button" class="btn" id="summaryEditBtn">
+        Go Back
+      </button>
+    </div>
+  </section>
+  </div>
+  </div>
+  </section>
+  </div>
+</main>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-meta">
+            © 2025 devAcademy · E-Learning Πληροφορικής
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+    <!-- Modal: Δομή popup για δυναμικά μηνύματα (π.χ. επιβεβαίωση εγγραφής). -->
+  <div id="modal" class="modal">
+    <div class="modal-box">
+      <button id="modalClose" class="modal-close" aria-label="Κλείσιμο">
+        &times;
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Σύνδεση με Javascript αρχεία για UI συμπεριφορά και responsiveness -->
+  <script src="assets/js/ui/menu.js" defer></script>
+  <script src="assets/js/ui/modal.js" defer></script>
+  <script src="assets/js/forms/register-form.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
+
+
