@@ -1,5 +1,7 @@
 # Web_Development_PartB
-
+# Authors: 
+-Aristeidis Karagiannakos, p3220066
+-Stavroula Giannakopoulou, p3220027
 # README-part-b.md
 
 Το Μέρος Α είναι ένα στατικό site υλοποιημένο κυρίως με HTML, CSS, κσι JavaScript, που στοχεύει στην εμφάνιση πληροφοριών για την e-learning πλατφόρμα, χωρίς να απαιτείται σύνδεση με backend ή βάση δεδομένων. Είναι προσβάσιμο μέσω του path /parta/.
